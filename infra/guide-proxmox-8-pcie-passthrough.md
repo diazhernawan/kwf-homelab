@@ -1,6 +1,10 @@
 ProxMox 8 PCIe Passthrough Guide
 
 
+First, find out if Proxmox is boothing using GRUB (Legacy BIOS) or Systemd (EFI boot).
+During booting look at your screen, if the screen has a Blue box then the system is booting with GRUB.
+If it is the screen is Black, then the system boots using Systemd
+
 1A. (Legacy System) Add IMMOU support for GRUB
 
 Edit /etc/default/grub:
@@ -108,3 +112,17 @@ Verify IOMMU interrupt remapping is enabled:
 	DMAR-IR: Enabled IRQ remapping in x2apic mode ('x2apic' can be different on old CPUs, but should still work)
 
 5. Reboot & ready for device passthrough.
+
+
+Guide:
+	
+	https://www.youtube.com/watch?v=_hOBAGKLQkI&t=434s
+	https://www.youtube.com/watch?v=BoMlfk397h0&t=1612s
+	https://pve.proxmox.com/wiki/PCI(e)_Passthrough
+
+Verify PCIE Passthtrough documentation
+
+	https://pve.proxmox.com/wiki/PCI_Passthrough#Verifying_IOMMU_parameters
+
+ 
+
