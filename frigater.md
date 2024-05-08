@@ -23,6 +23,11 @@ Frigate LXC
 		apt update && apt upgrade -y
 
 
+
+
+
+
+
 2. CONFIGURE SMB
    	Install SMB/CIFS
 
