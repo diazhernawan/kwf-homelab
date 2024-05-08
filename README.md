@@ -23,10 +23,10 @@ sudo mkdir /mnt/smb/Raptor -p
 # edit the fstab file
 sudo nano /etc/fstab
 
-# On CT - Mount FStab
+# On CT - Mount /etc/fstab
 //10.10.50.40/Raptor /mnt/smb/Raptor cifs uid=0,credentials=/root/.credentials.smb,iocharset=utf8,vers=3.0,noperm,nobrl 0 0
 
-# On VM - Mount FStab
+# On VM - Mount /etc/fstab
 //10.10.50.40/Raptor /mnt/smb/Raptor cifs uid=0,credentials=/home/diaz/.credentials.smb,iocharset=utf8,vers=3.0,noperm,nobrl 0 0
 
 
