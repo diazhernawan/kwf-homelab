@@ -22,6 +22,9 @@
 		apt update && apt upgrade -y
 
 
+#####################################################################
+
+
 2. CONFIGURE SMB
 	2A. Install SMB/CIFS
 
