@@ -181,6 +181,5 @@ Frigate LXC with OpenVino
 		      FRIGATE_RTSP_PASSWORD: "password"
 
 
-
-WAIT FRIGATE PULL & INSTALL MIGHT TAKE TWO HOUR+
+Wait for Frigate to pull & install Frigate, this might take few minutes to two hours.
    
