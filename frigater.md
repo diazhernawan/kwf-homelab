@@ -20,3 +20,25 @@
 	1C. Start LXC, then Update & Upgrade.
 
 		apt update && apt upgrade -y
+
+
+2. CONFIGURE SMB
+	2A. Install SMB/CIFS
+
+		apt install cifs-utils -y
+
+
+	2B. Create a folder in /mnt to mount the share
+
+		mkdir /mnt/smb/Frigate -p
+
+
+	2C. Create a hidden smb credentials file
+
+		nano ~/.credentials.smb
+	
+   	2D. credentials.smb
+
+		user=diaz
+		password= 
+		domain=katawarnafilm.com
