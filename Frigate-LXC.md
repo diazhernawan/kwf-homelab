@@ -1,6 +1,6 @@
 Frigate LXC with OpenVino
 
-1. Create a Priviledged LXC
+1. Create a Priviledged LXC:
 
 	LXC Spec
 
@@ -21,32 +21,32 @@ Frigate LXC with OpenVino
 
 		apt update && apt upgrade -y
 
-2. CONFIGURE SMB
-   	Install SMB/CIFS
+2. CONFIGURE SMB:
+   	Install SMB/CIFS:
 
 		apt install cifs-utils -y
 
 
-   	Create a folder in /mnt to mount the share
+   	Create a folder in /mnt to mount the share:
 
 		mkdir /mnt/smb/Frigate -p
 
 
-   	Create a hidden smb credentials file
+   	Create a hidden smb credentials file:
 
 		nano ~/.credentials.smb
 	
-   	.credentials.smb content
+   	.credentials.smb content:
 
 		user=diaz
 		password= 
 		domain=katawarnafilm.com
 
-   	Edit the fstab file
+   	Edit the fstab file:
 
 		nano /etc/fstab
 		
-	Mount SMB share for Frigate (at /etc/fstab)
+	Mount SMB share for Frigate (at /etc/fstab):
 
 		//10.10.50.40/Frigate /mnt/smb/Frigate cifs uid=0,credentials=/root/.credentials.smb,iocharset=utf8,vers=3.0,noperm 0 0,nobrl
 
@@ -54,32 +54,30 @@ Frigate LXC with OpenVino
    	Reboot
 
 
-   	Test Mount
+   	Test Mount:
 
 		mount -a
 		cd /mnt/smb/Frigate
 
    	Poweroff
 
-   		nano poweroff
-
-3. CONFIGURE INTEL IGPU PASSTHROUGH for OpenVino
-   	In Proxmox shell navigate to LXC configuration directory
+3. CONFIGURE INTEL IGPU PASSTHROUGH for OpenVino.
+   	In Proxmox shell navigate to LXC configuration directory:
 
 		cd /etc/pve/lxc/
 
-   	Edit LXC configuration on Proxmox shell
+   	Edit LXC configuration on Proxmox shell:
 
    		nano (lxc-id).conf
 
-   	Add LXC configuration to allow LXC to access iGPU
+   	Add LXC configuration to allow LXC to access iGPU:
 
 		lxc.cgroup2.devices.allow: c 226:0 rwm
 		lxc.cgroup2.devices.allow: c 226:128 rwm
 		lxc.mount.entry: /dev/dri/renderD128 dev/dri/renderD128 none bind,optional,create=file 0, 0
 		lxc.mount.entry: /dev/dri dev/dri none bind,optional,create=dir
 	
-   	.credentials.smb content
+   	.credentials.smb content:
 
 		user=diaz
 		password= 
@@ -87,38 +85,38 @@ Frigate LXC with OpenVino
 
    	Start the LXC
 		
-	Install intel gpu drivers
+	Install intel gpu drivers:
 
 		apt install vainfo
 		apt install intel-gpu-tools
 
-   	3F. Check the igpu
+   	3F. Check the igpu:
    
 		vainfo
 		intel_gpu_top
 
 
 4. Install Docker & Portainer
-	Update & Upgrade the LXC
+	Update & Upgrade the LXC:
 
    		apt update && apt upgrade -y
 
  
-	Install Docker
+	Install Docker:
 
 		apt install curl
 		curl -fsSL https://get.docker.com -o get-docker.sh
 		sh get-docker.sh
 
-   	Test docker-run
+   	Test docker-run:
    
    		docker run hello-world
 
-	Create the portainer volume
+	Create the portainer volume:
 
 		docker volume create portainer_data
 
-   	Install Portainer
+   	Install Portainer:
 
 		docker run -d \
 		--name="portainer" \
@@ -129,14 +127,14 @@ Frigate LXC with OpenVino
 		-v portainer_data:/data \
 		portainer/portainer-ce:latest
 	
-6. Frigate Installation
-	Create Frigate config at /opt/frigate
+6. Frigate Installation.
+	Create Frigate config at /opt/frigate:
 
 		mkdir /opt/frigate
 		cd /opt/frigate
 		nano config.yml
 
-	Content of /opt/frigate/config.yml
+	Content of /opt/frigate/config.yml:
 
 		mqtt:
 		  enabled: False
@@ -152,7 +150,7 @@ Frigate LXC with OpenVino
 
 	
 
-   	Deploy Frigate using docker-compose in Portainer stacks
+   	Deploy Frigate using docker-compose in Portainer stacks:
 
 		version: "3.9"
 		services:
