@@ -23,8 +23,13 @@ sudo mkdir /mnt/smb/Raptor -p
 # edit the fstab file
 sudo nano /etc/fstab
 
-# windows share on Raptor
+# On CT - Mount FStab
 //10.10.50.40/Raptor /mnt/smb/Raptor cifs uid=0,credentials=/root/.credentials.smb,iocharset=utf8,vers=3.0,noperm,nobrl 0 0
+
+# On VM - Mount FStab
+//10.10.50.40/Raptor /mnt/smb/Raptor cifs uid=0,credentials=/home/diaz/.credentials.smb,iocharset=utf8,vers=3.0,noperm,nobrl 0 0
+
+
 
 #reload daemon
 sudo systemctl daemon-reload
