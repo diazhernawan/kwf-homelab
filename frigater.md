@@ -1,5 +1,6 @@
-#Frigate LXC
+Frigate LXC
 
+#Proxmox Prep
 1. PREP THE LXC
 
 	1A. Edit options
