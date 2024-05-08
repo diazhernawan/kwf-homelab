@@ -1,6 +1,5 @@
-Frigate LXC
+Frigate LXC with OpenVino
 
-#Proxmox Prep
 1. Create a Priviledged LXC
 
 	LXC Spec
@@ -64,7 +63,7 @@ Frigate LXC
 
    		nano poweroff
 
-3. CONFIGURE INTEL IGPU
+3. CONFIGURE INTEL IGPU PASSTHROUGH for OpenVino
    	In Proxmox shell navigate to LXC configuration directory
 
 		cd /etc/pve/lxc/
