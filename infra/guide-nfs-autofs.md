@@ -1,4 +1,4 @@
-#AUTOFS (/mnt/nfs/Raptor)
+nfs mount using autofs (/mnt/nfs/Raptor)
 
 1. Create mount for nfs:
 
