@@ -1,6 +1,10 @@
 #Frigate LXC
+
 1. PREP THE LXC
-	1A. Create LXC
+
+	1A. Edit options
+
+		Create LXC Specs
 		General: Priviledged=1 Nesting=1
 		Template:Debian 12
 		Disk:32G
@@ -9,8 +13,10 @@
 		Network: Vlan Tag = 2 (IOT) DHCP=1
 		
 	1B. Edit options
+
 		Features: Nesting=1 NFS=1 SMB/CIFS=1 FUSE=1
 		
 
 	1C. Start LXC, then Update & Upgrade.
-apt update && apt upgrade -y
+
+		apt update && apt upgrade -y
