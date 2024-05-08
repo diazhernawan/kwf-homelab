@@ -1,0 +1,13 @@
+  sabnzbd:
+    image: lscr.io/linuxserver/sabnzbd:latest
+    container_name: 5_sabnzbd
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Asia/Jakarta
+    volumes:
+      - /home/diaz/5_sabnzbd:/config
+      - /mnt/smb/Raptor/1_storage:/1_storage
+    ports:
+      - 8085:8080
+    restart: unless-stopped
