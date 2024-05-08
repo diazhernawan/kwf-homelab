@@ -38,5 +38,5 @@ cd /mnt/smb/Raptor
 # reboot to test the share is mounted on started
 sudo reboot now
 
-# Documentation
+# documentation
 docs: https://man7.org/linux/man-pages/man8/mount.8.html
