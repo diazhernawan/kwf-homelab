@@ -1,4 +1,4 @@
----
+version: "3.3"
 services:
   qbittorrent:
     image: lscr.io/linuxserver/qbittorrent:latest
@@ -49,8 +49,6 @@ services:
       - 58846:58846 #optional
     restart: unless-stopped
 
-version: "3.3"
-services:
   jdownloader-2:
     container_name: stash_jdownloader2
     ports:
@@ -60,4 +58,5 @@ services:
       - /mnt/smb/Raptor/8_pstore/pdownload/jdownloader:/jdownloader:rw
     image: jlesage/jdownloader-2
     restart: unless-stopped
+
 networks: {}
