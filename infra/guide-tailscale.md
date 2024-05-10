@@ -51,7 +51,7 @@ Configure ip4 forwarding:
 
 Firewall allow masquerading with this command: 
 
-    allow masquerading with this command:
+    firewall-cmd --permanent --add-masquerade
 
 Connect your machine to your Tailscale network and authenticate in your browser:
   
