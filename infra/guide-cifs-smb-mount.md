@@ -52,6 +52,10 @@ CIFS-SMB-MOUNT Debian / Ubuntu
 
         sudo reboot now
 
+8. troubleshooting:
+        sudo journalctl -xe
+
+
 
 # Guide & Docs
 
