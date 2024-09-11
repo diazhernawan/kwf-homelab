@@ -2,7 +2,7 @@ CIFS-SMB-MOUNT Debian / Ubuntu
 
 1. update software repositories:
 
-sudo apt update
+```sudo apt update
 
 2. install cifs utilities:
 
