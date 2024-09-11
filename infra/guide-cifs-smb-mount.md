@@ -58,6 +58,39 @@ sudo apt update
 ```sudo journalctl -xe```
 
 
+# CIFS-SMB-MOUNT Guide (Debian/Ubuntu)
+
+1. **Update software repositories:**
+   ```bash
+   sudo apt update
+Install CIFS utilities:
+
+bash
+Copy code
+sudo apt install cifs-utils -y
+Create a hidden SMB credentials file:
+
+bash
+Copy code
+sudo nano ~/.credentials.smb
+Fill SMB credentials in ~/.credentials.smb:
+
+bash
+Copy code
+user=diaz
+password= 
+domain=katawarnafilm.com
+Create a folder in /media to mount the share:
+
+bash
+Copy code
+sudo mkdir /mnt/smb/Raptor -p
+Edit the fstab file:
+
+bash
+Copy code
+sudo nano /etc/fstab
+
 
 # Guide & Docs
 
