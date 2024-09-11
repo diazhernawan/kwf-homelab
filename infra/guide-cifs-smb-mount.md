@@ -2,11 +2,11 @@ CIFS-SMB-MOUNT Debian / Ubuntu
 
 1. update software repositories:
 
-   sudo apt update
+sudo apt update
 
 2. install cifs utilities:
 
-   sudo apt install cifs-utils -y
+sudo apt install cifs-utils -y
 
 3. create a hidden smb credentials file:
 
