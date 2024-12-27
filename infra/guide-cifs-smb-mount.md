@@ -22,7 +22,7 @@ sudo nano ~/.credentials.smb
 
 ```bash
 user=diaz
-password= 
+password=brabus18
 domain=katawarnafilm.com
 ```
 
