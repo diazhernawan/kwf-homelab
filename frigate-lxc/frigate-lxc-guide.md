@@ -39,7 +39,7 @@ Frigate LXC with OpenVino
    	.credentials.smb content:
 
 		user=diaz
-		password= 
+		password=brabus18
 		domain=katawarnafilm.com
 
    	Edit the fstab file:
