@@ -1,6 +1,5 @@
 ######FRIGATE-CONFIG-22APRIL2024######
 
-
 mqtt:
   enabled: true
   host: 10.10.50.9
@@ -16,15 +15,13 @@ detectors:
   ov:
     type: tensorrt
     device: 0
-    model:
-      path: /openvino-model/ssdlite_mobilenet_v2.xml
 
 model:
-  path: /config/model_cache/tensorrt/yolov7-320.trt
+  path: /config/model_cache/tensorrt/yolov4-tiny.trt
   input_tensor: nchw
   input_pixel_format: rgb
-  width: 320
-  height: 320
+  width: 416
+  height: 416
 
 
 
