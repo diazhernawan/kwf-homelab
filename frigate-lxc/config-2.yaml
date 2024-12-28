@@ -3,35 +3,29 @@
 
 mqtt:
   enabled: true
-  host: 192.168.1.9
+  host: 10.10.50.9
   port: 1883
   topic_prefix: frigate
   client_id: frigate
   user: mqtt-user
   password: mqtt
 
-
 ######DETECTORS&NVR######
-
 
 detectors:
   ov:
-    type: openvino
-    device: AUTO
+    type: tensorrt
+    device: 0
     model:
       path: /openvino-model/ssdlite_mobilenet_v2.xml
 
 model:
-  width: 300
-  height: 300
-  input_tensor: nhwc
-  input_pixel_format: bgr
-  labelmap_path: /openvino-model/coco_91cl_bkgr.txt
+  path: /config/model_cache/tensorrt/yolov7-320.trt
+  input_tensor: nchw
+  input_pixel_format: rgb
+  width: 320
+  height: 320
 
-ffmpeg:
-  hwaccel_args: preset-vaapi
-  output_args:
-    record: preset-record-generic-audio-aac
 
 
 #motion:
