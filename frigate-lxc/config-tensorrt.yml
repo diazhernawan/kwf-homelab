@@ -43,6 +43,8 @@ record:
     objects:
       - person
       - car
+      - motorcycle
+      - bicycle
 
 detect:
   fps: 25
@@ -110,7 +112,7 @@ go2rtc:
 
   webrtc:
     candidates:
-      - 10.10.50.16:8555
+      - 10.10.50.84:8555
       - stun:8555
 
 ######CAMERAS######
@@ -122,11 +124,11 @@ cameras:
       output_args:
         record: preset-record-generic-audio-copy
       inputs:
-        - path: rtsp://10.10.50.16:8554/Carport_Depan
+        - path: rtsp://10.10.50.84:8554/Carport_Depan
           input_args: preset-rtsp-restream
           roles:
             - record
-        - path: rtsp://10.10.50.16:8554/Carport_Depan_sub
+        - path: rtsp://10.10.50.84:8554/Carport_Depan_sub
           input_args: preset-rtsp-restream
           roles:
             - detect
@@ -138,11 +140,11 @@ cameras:
       output_args:
         record: preset-record-generic-audio-aac
       inputs:
-        - path: rtsp://10.10.50.16:8554/Carport_Samping
+        - path: rtsp://10.10.50.84:8554/Carport_Samping
           input_args: preset-rtsp-restream
           roles:
             - record
-        - path: rtsp://10.10.50.16:8554/Carport_Samping_sub
+        - path: rtsp://10.10.50.84:8554/Carport_Samping_sub
           input_args: preset-rtsp-restream
           roles:
             - detect
@@ -150,19 +152,19 @@ cameras:
 
     motion:
       mask:
-        - 0.402,0.362,0.426,0.196,0.514,0.204,0.514,0.411
-        - 0.252,0.601,0.452,0.666,0.436,0.998,0,1,0,0.916,0.113,0.66
+        - 0.362,0.411,0.425,0.187,0.513,0.191,0.51,0.425
+        - 0.23,0.546,0.475,0.581,0.454,1,0,1,0,0.902,0.103,0.646
   Taman_Belakang:
     ffmpeg:
       hwaccel_args: preset-nvidia-h264 # replace with your specs or comment out the line entirely
       output_args:
         record: preset-record-generic-audio-copy
       inputs:
-        - path: rtsp://10.10.50.16:8554/Taman_Belakang
+        - path: rtsp://10.10.50.84:8554/Taman_Belakang
           input_args: preset-rtsp-restream
           roles:
             - record
-        - path: rtsp://10.10.50.16:8554/Taman_Belakang_sub
+        - path: rtsp://10.10.50.84:8554/Taman_Belakang_sub
           input_args: preset-rtsp-restream
           roles:
             - detect
@@ -174,11 +176,11 @@ cameras:
       output_args:
         record: preset-record-generic-audio-copy
       inputs:
-        - path: rtsp://10.10.50.16:8554/Office
+        - path: rtsp://10.10.50.84:8554/Office
           input_args: preset-rtsp-restream
           roles:
             - record
-        - path: rtsp://10.10.50.16:8554/Office_sub
+        - path: rtsp://10.10.50.84:8554/Office_sub
           input_args: preset-rtsp-restream
           roles:
             - detect
