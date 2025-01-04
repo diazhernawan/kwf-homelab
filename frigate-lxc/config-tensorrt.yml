@@ -1,5 +1,8 @@
 ######FRIGATE-CONFIG-22APRIL2024######
 
+tls:
+  enabled: false
+
 mqtt:
   enabled: true
   host: 10.10.50.9
@@ -17,11 +20,11 @@ detectors:
     type: tensorrt
     device: 0 #This is the default, select the first GPU
 model:
-  path: /config/model_cache/tensorrt/yolov7-320.trt
+  path: /config/model_cache/tensorrt/yolov7-tiny-416.trt
   input_tensor: nchw
   input_pixel_format: rgb
-  width: 320
-  height: 320
+  width: 416
+  height: 416
 ##
 
 ffmpeg:
