@@ -12,7 +12,7 @@ sudo mkdir /mnt/nfs/Raptor -p
 
 5. Edit /etc/fstab:
 ```
-10.10.50.40:/mnt/ARC06/Raptor /mnt/nfs/Raptor nfs auto,nofail,noatime,nolock,intr,tcp,actimeo=1800 0 0
+10.0.1.50:/mnt/ARC06/Raptor /mnt/nfs/Raptor nfs auto,nofail,noatime,nolock,intr,tcp,actimeo=1800 0 0
 ```
 
 6. Mount the Network Drive:
@@ -55,8 +55,11 @@ Mounts:
 10.10.50.30:/mnt/ARC02/Pegasus /mnt/nfs/Pegasus nfs auto,nofail,noatime,nolock,intr,tcp,actimeo=1800 0 0
 ```
 ``` 
-10.10.50.40:/mnt/ARC06/Raptor /mnt/nfs/Raptor nfs auto,nofail,noatime,nolock,intr,tcp,actimeo=1800 0 0
+10.0.1.50:/mnt/ARC06/Raptor /mnt/nfs/Raptor nfs auto,nofail,noatime,nolock,intr,tcp,actimeo=1800 0 0
 ```
 ```
-10.10.50.40:/mnt/ARC07/Frigate /mnt/nfs/Frigate nfs auto,nofail,noatime,nolock,intr,tcp,actimeo=1800 0 0
+10.0.1.50:/mnt/ARC07/Frigate /mnt/nfs/Frigate nfs auto,nofail,noatime,nolock,intr,tcp,actimeo=1800 0 0
+```
+```
+10.0.1.50:/mnt/ARC07/Viper /mnt/nfs/Viper nfs auto,nofail,noatime,nolock,intr,tcp,actimeo=1800 0 0
 ```
