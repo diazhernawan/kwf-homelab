@@ -1,22 +1,23 @@
 nfs mount using fstab
 
 1. Install nfs-common:
-
 ```
 apt -y install nfs-common
 ```
 
 4. Create mount for nfs:
+```
+sudo mkdir /mnt/nfs/Raptor -p
+```
 
-        sudo mkdir /mnt/nfs/Raptor -p
-   
 5. Edit /etc/fstab:
-
-        10.10.50.40:/mnt/ARC06/Raptor /mnt/nfs/Raptor nfs auto,nofail,noatime,nolock,intr,tcp,actimeo=1800 0 0
+```
+10.10.50.40:/mnt/ARC06/Raptor /mnt/nfs/Raptor nfs auto,nofail,noatime,nolock,intr,tcp,actimeo=1800 0 0
+```
 
 6. Mount the Network Drive:
 
-        sudo mount -a
+sudo mount -a
 
 7. reload daemon:
 
