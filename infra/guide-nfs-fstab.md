@@ -2,9 +2,9 @@ nfs mount using fstab
 
 1. Install nfs-common:
 
-   apt -y install nfs-common
+         apt -y install nfs-common
    
-3. Create mount for nfs:
+4. Create mount for nfs:
 
         sudo mkdir /mnt/nfs/Raptor -p
    
