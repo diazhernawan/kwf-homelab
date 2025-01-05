@@ -2,7 +2,7 @@ nfs mount using fstab
 
 1. Install nfs-common:
 
-        apt -y install nfs-common
+   apt -y install nfs-common
    
 3. Create mount for nfs:
 
