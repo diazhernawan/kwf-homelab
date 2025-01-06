@@ -39,12 +39,14 @@ Nas (10.0.1.20 - 10.0.1.49)
 10.0.1.22 Omega
 
 VM & LXC (10.0.1.50 - 10.0.1.210)
+VM
 10.0.1.50 Homeassistant
 10.0.1.51 docker-1-apollo
 10.0.1.52 docker-2-starbuck
 10.0.1.53 docker-3-athena
 10.0.1.54 docker-4-helo
 10.0.1.55 frigate(vlan1001)
+LXC
 10.0.1.61 plex
 10.0.1.62 jellyfin
 
