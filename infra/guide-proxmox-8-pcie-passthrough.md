@@ -21,6 +21,11 @@ OR
 ```
 GRUB_CMDLINE_LINUX_DEFAULT="quiet amd_iommu=on"
 ```
+option entry:
+```
+GRUB_CMDLINE_LINUX_DEFAULT="quiet intel_iommu=on iommu=pt pcie_acs_override=downstream,multifunction nofb nomodeset video=vesafb:off,efifb:off"
+```
+
 Save file and close.
 
 Then update grub:
