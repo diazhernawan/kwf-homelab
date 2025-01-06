@@ -1,4 +1,4 @@
-Management vlan 1000
+Management vlan 1
 10.0.0.0/24
 
 Servers Lan vlan 1001
