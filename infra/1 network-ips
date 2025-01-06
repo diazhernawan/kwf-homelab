@@ -16,7 +16,7 @@ Management (10.0.5.0/24) VLAN 4
 Guest vlan 1005
 10.0.5.0/24
 
-
+---
 
 Main (10.0.0.0/24) VLAN 1
 Networking HW
@@ -26,6 +26,7 @@ Networking HW
 10.0.0.6 1F Home
 10.0.0.7 2F Corridor 
 
+---
 
 Servers (10.0.1.0/24) VLAN 1001
 Networking SW (10.0.1.10 - 10.0.1.19)
@@ -65,13 +66,19 @@ Workstations (10.0.1.210 - 10.0.1.220)
 Reserved:
 220 - 254
 
+---
+
 Katawarna (10.0.2.0/24) VLAN 1002
 Home & WLAN
+
+---
 
 IOT & Security (10.0.3.0/24) VLAN 1003
 70 - 100 wiz
 10.0.3.50 Homeassistant
 10.0.3.55 Frigate
+
+---
 
 Management (10.0.4.0/24) VLAN 4
 10.0.4.100 R730 idrac 
