@@ -147,5 +147,7 @@ Verify PCIE Passthtrough documentation:
 ```
 https://pve.proxmox.com/wiki/PCI_Passthrough#Verifying_IOMMU_parameters
 ```
- 
+```
+https://www.reddit.com/r/homelab/comments/b5xpua/the_ultimate_beginners_guide_to_gpu_passthrough/
+```
 
