@@ -35,7 +35,7 @@ Networking SW (10.0.1.10 - 10.0.1.19)
 10.0.1.14 cloudflared
 
 Nas (10.0.1.20 - 10.0.1.29)
-10.0.1.20 Raptor
+10.0.1.20 Raptor (v)
 10.0.1.21 Arcturus
 10.0.1.22 Omega
 
@@ -58,7 +58,7 @@ Hypervisors (10.0.1.100 - 10.0.1.120)
 10.0.1.120 PDM
 
 Workstations (10.0.1.210 - 10.0.1.220)
-10.0.1.201 kwf-ws-1
+10.0.1.201 kwf-ws-1 (v)
 10.0.1.202 kwf-ws-2
 10.0.1.203 kwf-ws-3
 10.0.1.204 diaz-macbook
@@ -71,7 +71,7 @@ Reserved:
 Management (10.0.2.0/24) VLAN 2
 10.0.2.100 R730 idrac 
 10.0.2.102 R510 idrac 
-10.0.2.110 X10ASLL-F
+10.0.2.110 X10ASLL-F (v)
 
 ---
 
