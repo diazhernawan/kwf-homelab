@@ -69,8 +69,8 @@ Reserved:
 ---
 
 Management (10.0.2.0/24) VLAN 2
-10.0.2.100 R730 idrac 
-10.0.2.102 R510 idrac 
+10.0.2.100 R730 idrac (v)
+10.0.2.105 R510 idrac 
 10.0.2.110 X10ASLL-F (v)
 
 ---
