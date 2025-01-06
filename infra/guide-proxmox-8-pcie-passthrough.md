@@ -27,9 +27,8 @@ Then update grub:
 ```
 update-grub
 ```
-
-
-
+|
+|
 1B. (EFI boot system) Add IMMOU support for Systemd (ZFS):
 
 Edit /etc/kernel/cmdline:
@@ -50,9 +49,9 @@ Then update proxmox-bootl-tool:
 ```
 proxmox-boot-tool refresh
 ```
-
-
-
+|
+|
+|
 2. Load VFIO modules at boot
 
 edit /etc/modules:
@@ -67,9 +66,9 @@ vfio_pci
 vfio_virqfd
 ```
 Save file and close
-
-
-
+|
+|
+|
 3.Blacklist graphic drivers (optional):
 
 edit /etc/modprobe.d/iommu_unsafe_interrupts.conf & /etc/modprobe.d/kvm.conf:
@@ -98,8 +97,9 @@ Copy the HEX values from your GPU to /etc/modprobe.d/vfio.conf:
 ```
 echo "options vfio-pci ids=####.####,####.#### disable_vga=1"> /etc/modprobe.d/vfio.conf
 ```
-
-
+|
+|
+|
 
 4. Apply all changes
 
@@ -107,8 +107,9 @@ Update-inirafs:
 ```
 update-initramfs -u -k all
 ```
-
-
+|
+|
+|
 
 5. Verify PCIE PASSTHROUGH
 
@@ -128,8 +129,13 @@ If you see one of the following lines: then remapping is supported.
 AMD-Vi: Interrupt remapping enabled
 DMAR-IR: Enabled IRQ remapping in x2apic mode ('x2apic' can be different on old CPUs, but should still work)
 ```
-5. Reboot & ready for device passthrough.
-
+|
+|
+|
+6. Reboot & ready for device passthrough.
+|
+|
+|
 
 
 Guide:
