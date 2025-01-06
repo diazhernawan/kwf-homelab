@@ -18,18 +18,18 @@ Guest vlan 1005
 
 
 
-Management vlan 1000 (10.0.0.0/24)
+Management (10.0.0.0/24) VLAN 1
 Hardware Management ipmi
-1 UDM PRO
-3 USW AGG
-5 2F Office
-6 1F Home
-7 2F Corridor 
+10.0.0.1 UDM PRO
+10.0.0.3 USW AGG
+10.0.0.5 2F Office
+10.0.0.6 1F Home
+10.0.0.7 2F Corridor 
 
 10.0.0.10 - 10.0.0.50
-R730 idrac 10.0.0.10
-R510 idrac 10.0.0.15
-X10ASLL-F 10.0.0.20 
+10.0.0.10 R730 idrac 
+10.0.0.15 R510 idrac 
+10.0.0.20 X10ASLL-F 
 
 Hypervisors
 10.0.0.50 - 10.0.0.100
@@ -38,36 +38,36 @@ Hypervisors
 200 PDM
 
 
-Servers Vlan 1001 (10.0.1.0/24)
+Servers (10.0.1.0/24) VLAN 1001
 
 Networking
 10.0.1.10 - 10.0.1.49
-10 pihole
-15 tailscale
-20 cloudflared
+10.0.1.15 tailscale
+10.0.1.17 pihole
+10.0.1.20 cloudflared
 
 Nas
 10.0.1.50 - 10.0.1.99
-50 Raptor
-60 Arcturus
-70 Omega
+10.0.1.50 Raptor
+10.0.1.60 Arcturus
+10.0.1.70 Omega
 
 VM & Services
 10.0.1.100 - 10.0.1.210
-100 Homeassistant
-101 docker-1-apollo
-102 docker-2-starbuck
-103 docker-3-athena
-104 docker-4-helo
-110 plex
-115 jellyfin
-200 frigate(vlan1001)
+10.0.1.100 Homeassistant
+10.0.1.101 docker-1-apollo
+10.0.1.102 docker-2-starbuck
+10.0.1.103 docker-3-athena
+10.0.1.104 docker-4-helo
+10.0.1.110 plex
+10.0.1.115 jellyfin
+10.0.1.200 frigate(vlan1001)
 
 Reserved:
 210 - 254
 
 
-Katawarna vlan 1002 (10.0.2.0/24)
+Katawarna (10.0.2.0/24) VLAN 1002
 
 Workstations
 10.0.2.10 - 10.0.2.50
@@ -77,7 +77,7 @@ kwf-ws-3 30
 diaz-macbook 40
 
 
-IOT & Security vlan 1004 (10.0.4.0/24)
+IOT & Security (10.0.4.0/24) VLAN 1003
 50 - 70 wiz
-100 Homeassistant
-200 Frigate
+10.0.4.100 Homeassistant
+10.0.4.200 Frigate
