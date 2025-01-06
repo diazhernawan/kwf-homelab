@@ -39,18 +39,19 @@ Nas (10.0.1.20 - 10.0.1.29)
 10.0.1.21 Arcturus (v)
 10.0.1.22 Omega
 
-VM & LXC (10.0.1.30 - 10.0.1.99)
-VM (10.0.1.30 - 10.0.1.69)
-10.0.1.30 Homeassistant
-10.0.1.31 docker-1-apollo
-10.0.1.32 docker-2-starbuck
-10.0.1.33 docker-3-athena
-10.0.1.34 docker-4-helo
-10.0.1.35 frigate(vlan1001)
 
-LXC (10.0.1.70 - 10.0.1.99)
-10.0.1.70 plex
-10.0.1.71 jellyfin
+LXC & VM (10.0.1.30 - 10.0.1.99)
+VM (10.0.1.30 - 10.0.1.69)
+10.0.1.30 plex
+10.0.1.31 jellyfin
+
+VM (10.0.1.70 - 10.0.1.99)
+10.0.1.70 Homeassistant
+10.0.1.71 docker-1-apollo
+10.0.1.72 docker-2-starbuck
+10.0.1.73 docker-3-athena
+10.0.1.74 docker-4-helo
+10.0.1.75 frigate(vlan1001)
 
 Hypervisors (10.0.1.100 - 10.0.1.120)
 10.0.1.101 prox01
