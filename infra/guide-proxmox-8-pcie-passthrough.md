@@ -29,6 +29,7 @@ update-grub
 ```
 |
 |
+
 1B. (EFI boot system) Add IMMOU support for Systemd (ZFS):
 
 Edit /etc/kernel/cmdline:
@@ -52,6 +53,7 @@ proxmox-boot-tool refresh
 |
 |
 |
+
 2. Load VFIO modules at boot
 
 edit /etc/modules:
@@ -69,6 +71,7 @@ Save file and close
 |
 |
 |
+
 3.Blacklist graphic drivers (optional):
 
 edit /etc/modprobe.d/iommu_unsafe_interrupts.conf & /etc/modprobe.d/kvm.conf:
@@ -132,7 +135,9 @@ DMAR-IR: Enabled IRQ remapping in x2apic mode ('x2apic' can be different on old 
 |
 |
 |
+
 6. Reboot & ready for device passthrough.
+
 |
 |
 |
