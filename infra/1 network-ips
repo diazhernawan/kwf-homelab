@@ -75,6 +75,6 @@ IOT & Security (10.0.3.0/24) VLAN 1003
 
 Management (10.0.4.0/24) VLAN 4
 10.0.4.100 R730 idrac 
-10.0.4.105 R510 idrac 
+10.0.4.102 R510 idrac 
 10.0.4.110 X10ASLL-F
 
