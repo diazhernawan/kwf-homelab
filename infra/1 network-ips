@@ -68,8 +68,10 @@ Reserved:
 
 ---
 
-Katawarna (10.0.2.0/24) VLAN 1002
-Home & WLAN
+Management (10.0.2.0/24) VLAN 2
+10.0.2.100 R730 idrac 
+10.0.2.102 R510 idrac 
+10.0.2.110 X10ASLL-F
 
 ---
 
@@ -80,8 +82,5 @@ IOT & Security (10.0.3.0/24) VLAN 1003
 
 ---
 
-Management (10.0.4.0/24) VLAN 4
-10.0.4.100 R730 idrac 
-10.0.4.102 R510 idrac 
-10.0.4.110 X10ASLL-F
-
+Katawarna (10.0.4.0/24) VLAN 1004
+Home & WLAN
