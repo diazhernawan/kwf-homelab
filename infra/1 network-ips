@@ -42,8 +42,8 @@ Nas (10.0.1.20 - 10.0.1.29)
 
 LXC & VM (10.0.1.30 - 10.0.1.99)
 VM (10.0.1.30 - 10.0.1.49)
-10.0.1.30 plex
-10.0.1.31 jellyfin
+10.0.1.30 plex      (v)
+10.0.1.31 jellyfin  (v)
 
 VM (10.0.1.50 - 10.0.1.99)
 10.0.1.50 Homeassistant
@@ -71,15 +71,15 @@ Reserved:
 
 Management (10.0.2.0/24) VLAN 2
 10.0.2.100 R730 idrac (v)
-10.0.2.105 R510 idrac 
-10.0.2.110 X10ASLL-F (v)
+10.0.2.105 R510 idrac (v)
+10.0.2.110 X10ASLL-F  (v)
 
 ---
 
 IOT & Security (10.0.3.0/24) VLAN 1003
-10.0.3.9 MQTT
+10.0.3.9 MQTT              (v)
 70 - 100 wiz
-10.0.3.50 Homeassistant
+10.0.3.50 Homeassistant    (v)
 10.0.3.55 Frigate
 
 ---
