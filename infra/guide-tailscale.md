@@ -81,4 +81,8 @@ Re-enable tailscale:
     tailscale down
     tailscale up --advertise-routes=10.10.50.0/24,192.168.1.0/24 --accept-routes --advertise-exit-node 
 
+```
+tailscale up --advertise-routes=10.0.0.0/24,10.0.1.0/24,10.0.2.0/24,10.0.3.0/24,10.0.4.0/24 --accept-routes --advertise-exit-node
+```
+
 4. Config the static route in UDM PRO / Firewall / Router
