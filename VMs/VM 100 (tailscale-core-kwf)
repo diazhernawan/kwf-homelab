@@ -1,0 +1,18 @@
+Hostname: 100 tailscale-core-kwf
+Date: 08/JAN/2025
+
+OS: Debian 12
+CPU: 4 Cores x86-64-v2-AES
+RAM: 2048
+HDD: 32gb
+Proxmox Remote: Prox01
+
+IP: 10.0.1.11
+MAC: BC:24:11:31:6F:5D
+
+Services:
+- tailscale-core-kwf
+Docker images:
+- n/a
+Integrations:
+- n/a
