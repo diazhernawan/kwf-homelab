@@ -1,4 +1,4 @@
-Frigate LXC with OpenVino
+**Frigate LXC with OpenVino**
 
 1. Create a Priviledged LXC:
 
