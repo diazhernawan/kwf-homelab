@@ -1,0 +1,19 @@
+# Hostname
+Date: {{date}}
+IP:
+MAC:
+OS:
+CPU:
+RAM:
+HDD:
+VMware host:
+Services:
+- foo
+Docker images:
+- foo
+Integrations:
+- foo
+Ports:
+|Port | Type | Source | Dest|
+|--- | --- | --- | ---|
+|80 | TCP | 10.0.0.x | 10.0.1.x|
