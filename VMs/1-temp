@@ -1,22 +1,24 @@
+Date: 
+
 Proxmox Node: 
-Virtual Machine:
-Hostname:
-Date:
+Virtual Machine: 
+Hostname: 
 
-OS:  
+OS: 
 CPU (cores):
-Type: 
-RAM (MiB): 
-HDD (GB): 
+Type:
+RAM (Mib):
+HDD:
 
-IP:
-MAC:
+Network Device (Net0):
+	VLAN: 
+	IP: 
+	MAC: 
 
 Services:
-- foo 
+- foo
 
 Docker images:
 - foo
-    
 Integrations:
 - foo
