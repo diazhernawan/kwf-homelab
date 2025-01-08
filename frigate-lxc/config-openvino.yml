@@ -34,18 +34,18 @@ ffmpeg:
     record: preset-record-generic-audio-aac
 
 
-#motion:
-  #threshold: 30
-  #lightning_threshold: 0.8
-  #contour_area: 10
-  #frame_alpha: 0.01
-  #frame_height: 100
-  # Optional: motion mask
-  # NOTE: see docs for more detailed info on creating masks
-  #mask: 207,327,210,270,193,222,157,219,127,262,121,320
-  #improve_contrast: true
-  # Optional: Delay when updating camera motion through MQTT from ON -> OFF (default: shown below).
-  #mqtt_off_delay: 30
+# motion:
+  # threshold: 30
+  # lightning_threshold: 0.8
+  # contour_area: 10
+  # frame_alpha: 0.01
+  # frame_height: 100
+  #  Optional: motion mask
+  #  NOTE: see docs for more detailed info on creating masks
+  # mask: 207,327,210,270,193,222,157,219,127,262,121,320
+  # improve_contrast: true
+  #  Optional: Delay when updating camera motion through MQTT from ON -> OFF (default: shown below).
+  # mqtt_off_delay: 30
 
 
 record:
@@ -114,16 +114,16 @@ telemetry:
   version_check: true
 
 
-#birdseye:
+# birdseye:
   # Optional: Enable birdseye view (default: shown below)
   #enabled: True
   # Optional: Width of the output resolution (default: shown below)
-  #width: 1280
+  # width: 1280
   # Optional: Height of the output resolution (default: shown below)
-  #height: 720
+  # height: 720
   # Optional: Encoding quality of the mpeg1 feed (default: shown below)
   # 1 is the highest quality, and 31 is the lowest. Lower quality feeds utilize less CPU resources.
-  #quality: 5
+  # quality: 5
   # Optional: Mode of the view. Available options are: objects, motion, and continuous
   #   objects - cameras are included if they have had a tracked object within the last 30 seconds
   #   motion - cameras are included if motion was detected in the last 30 seconds
