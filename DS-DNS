@@ -6,9 +6,16 @@ Biznet DNS
 203.142.82.222
 203.142.84.222
 
+Biznet PPPoE
+
+username: 
+134401840005
+
+Password:
+372473
+
+
 Control Panel\Network and Internet\Network Connections
-
-
 
 IPv6
 2404:8000:1002:5642:9042:47a6:6564:ade
