@@ -1,19 +1,22 @@
-# Hostname
-Date: {{date}}
+Proxmox Node: 
+Virtual Machine:
+Hostname:
+Date:
+
+OS:  
+CPU (cores):
+Type: 
+RAM (MiB): 
+HDD (GB): 
+
 IP:
 MAC:
-OS:
-CPU:
-RAM:
-HDD:
-VMware host:
+
 Services:
-- foo
+- foo 
+
 Docker images:
 - foo
+    
 Integrations:
 - foo
-Ports:
-|Port | Type | Source | Dest|
-|--- | --- | --- | ---|
-|80 | TCP | 10.0.0.x | 10.0.1.x|
