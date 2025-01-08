@@ -1,6 +1,4 @@
 ######FRIGATE-CONFIG-22APRIL2024######
-
-
 mqtt:
   enabled: true
   host: 192.168.1.9
@@ -12,8 +10,6 @@ mqtt:
 
 
 ######DETECTORS&NVR######
-
-
 detectors:
   ov:
     type: openvino
@@ -33,19 +29,18 @@ ffmpeg:
   output_args:
     record: preset-record-generic-audio-aac
 
-
-# motion:
-  # threshold: 30
-  # lightning_threshold: 0.8
-  # contour_area: 10
-  # frame_alpha: 0.01
-  # frame_height: 100
-  #  Optional: motion mask
-  #  NOTE: see docs for more detailed info on creating masks
-  # mask: 207,327,210,270,193,222,157,219,127,262,121,320
-  # improve_contrast: true
-  #  Optional: Delay when updating camera motion through MQTT from ON -> OFF (default: shown below).
-  # mqtt_off_delay: 30
+motion:
+  threshold: 30
+  lightning_threshold: 0.8
+  contour_area: 10
+  frame_alpha: 0.01
+  frame_height: 100
+    #  Optional: motion mask
+    #  NOTE: see docs for more detailed info on creating masks
+  mask: 207,327,210,270,193,222,157,219,127,262,121,320
+  improve_contrast: true
+    #  Optional: Delay when updating camera motion through MQTT from ON -> OFF (default: shown below).
+  mqtt_off_delay: 30
 
 
 record:
@@ -94,7 +89,6 @@ snapshots:
 
 
 ######TELEMETRY######
-
 telemetry:
   # Optional: Enabled network interfaces for bandwidth stats monitoring (default: empty list, let nethogs search all)
   network_interfaces:
@@ -114,26 +108,36 @@ telemetry:
   version_check: true
 
 
-# birdseye:
+#birdseye:
   # Optional: Enable birdseye view (default: shown below)
-  #enabled: True
+#  enabled: True
+  # Optional: Restream birdseye via RTSP (default: shown below)
+  # NOTE: Enabling this will set birdseye to run 24/7 which may increase CPU usage somewhat.
+#  restream: False
   # Optional: Width of the output resolution (default: shown below)
-  # width: 1280
+#  width: 1280
   # Optional: Height of the output resolution (default: shown below)
-  # height: 720
+#  height: 720
   # Optional: Encoding quality of the mpeg1 feed (default: shown below)
   # 1 is the highest quality, and 31 is the lowest. Lower quality feeds utilize less CPU resources.
-  # quality: 5
+#  quality: 8
   # Optional: Mode of the view. Available options are: objects, motion, and continuous
   #   objects - cameras are included if they have had a tracked object within the last 30 seconds
   #   motion - cameras are included if motion was detected in the last 30 seconds
   #   continuous - all cameras are included always
-  #mode: continuous
+#  mode: objects
+  # Optional: Threshold for camera activity to stop showing camera (default: shown below)
+#  inactivity_threshold: 30
+  # Optional: Configure the birdseye layout
+#  layout:
+    # Optional: Scaling factor for the layout calculator, range 1.0-5.0 (default: shown below)
+#    scaling_factor: 2.0
+    # Optional: Maximum number of cameras to show at one time, showing the most recent (default: show all cameras)
+#    max_cameras: 1
+
 
 
 ######go2rtc######
-
-
 go2rtc:
   streams:
     Carport_Depan:
@@ -160,8 +164,6 @@ go2rtc:
 
 
 ######CAMERAS######
-
-
 cameras:
   Carport_Depan:
     ffmpeg:
