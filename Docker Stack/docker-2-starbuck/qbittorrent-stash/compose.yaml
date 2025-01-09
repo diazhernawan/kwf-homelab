@@ -1,4 +1,3 @@
-```yaml
 ---
 services:
   qbittorrent:
@@ -19,4 +18,3 @@ services:
       - 6890:6881/udp
     restart: unless-stopped
 networks: {}
-```
