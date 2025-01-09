@@ -1,4 +1,3 @@
-```yaml
 ---
 services:
   jellyseerr:
@@ -165,5 +164,3 @@ volumes:
       type: none
       o: bind
       device: /mnt/smb/Raptor/1_storage
-
-```
