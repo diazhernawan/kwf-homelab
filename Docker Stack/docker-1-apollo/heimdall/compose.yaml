@@ -1,4 +1,3 @@
-```yaml
 ---
 services:
   heimdall:
@@ -14,4 +13,3 @@ services:
       - "7080:80"
       - "7043:443"
     restart: unless-stopped
-```
