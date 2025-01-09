@@ -1,0 +1,169 @@
+```yaml
+---
+services:
+  jellyseerr:
+    image: fallenbagel/jellyseerr:latest
+    container_name: 1_jellyseerr
+    environment:
+      - LOG_LEVEL=debug
+      - TZ=Asia/Jakarta
+    ports:
+      - "5055:5055"
+    volumes:
+      - ./1_jellyseerr:/app/config
+    restart: unless-stopped
+
+  prowlarr:
+    image: lscr.io/linuxserver/prowlarr:latest
+    container_name: 2_prowlarr
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Asia/Jakarta
+    volumes:
+      - ./2_prowlarr:/config
+    ports:
+      - "9696:9696"
+    restart: unless-stopped
+
+  radarr:
+    image: lscr.io/linuxserver/radarr:latest
+    container_name: 3_radarr
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Asia/Jakarta
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - ./3_radarr:/config
+      - 1_storage:/1_storage
+    ports:
+      - "7878:7878"
+    restart: unless-stopped
+    healthcheck:
+      test: curl -f http://localhost:7878 || exit 1
+      interval: 30s
+      timeout: 10s
+      retries: 5
+
+  sonarr:
+    image: lscr.io/linuxserver/sonarr:latest
+    container_name: 4_sonarr
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Asia/Jakarta
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - ./4_sonarr:/config
+      - 1_storage:/1_storage
+    ports:
+      - "8989:8989"
+    restart: unless-stopped
+    healthcheck:
+      test: curl -f http://localhost:8989 || exit 1
+      interval: 30s
+      timeout: 10s
+      retries: 5
+
+  sabnzbd:
+    image: lscr.io/linuxserver/sabnzbd:latest
+    container_name: 5_sabnzbd
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Asia/Jakarta
+    volumes:
+      - ./5_sabnzbd:/config
+      - 1_storage:/1_storage
+    ports:
+      - "8090:8080"
+    restart: unless-stopped
+    security_opt:
+      - apparmor=unconfined
+    healthcheck:
+      test: curl -f http://localhost:8080 || exit 1
+      interval: 30s
+      timeout: 10s
+      retries: 5
+
+  bazarr:
+    image: lscr.io/linuxserver/bazarr:latest
+    container_name: 6_bazarr
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Asia/Jakarta
+    volumes:
+      - ./6_bazarr:/config
+      - 1_storage:/1_storage
+    ports:
+      - "6767:6767"
+    restart: unless-stopped
+
+  qbittorrent:
+    image: lscr.io/linuxserver/qbittorrent:latest
+    container_name: 7_qbittorrent
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Asia/Jakarta
+      - WEBUI_PORT=8080
+    volumes:
+      - ./7_qbittorrent:/config
+      - 1_storage:/1_storage
+    ports:
+      - "8080:8080"
+      - "6881:6881"
+      - "6881:6881/udp"
+    restart: unless-stopped
+    healthcheck:
+      test: curl -f http://localhost:8080 || exit 1
+      interval: 30s
+      timeout: 10s
+      retries: 5
+
+  deluge:
+    image: lscr.io/linuxserver/deluge:latest
+    container_name: 8_deluge
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Asia/Jakarta
+      - DELUGE_LOGLEVEL=error
+    volumes:
+      - ./8_deluge:/config
+      - 1_storage:/1_storage
+    ports:
+      - "8112:8112"
+      - "6882:6881"
+      - "6882:6881/udp"
+      - "58846:58846"
+    restart: unless-stopped
+
+  overseerr:
+    image: lscr.io/linuxserver/overseerr:latest
+    container_name: 9_overseerr
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Asia/Jakarta
+    volumes:
+      - ./9_overseerr:/config
+    ports:
+      - 5500:5055
+    restart: unless-stopped
+
+networks:
+  portainer_default:
+    external: true
+
+volumes:
+  1_storage:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: /mnt/smb/Raptor/1_storage
+
+```

@@ -1,0 +1,75 @@
+```yaml
+---
+services:
+  tdarr:
+    container_name: tdarr-server
+    image: ghcr.io/haveagitgat/tdarr:latest
+    restart: unless-stopped
+    network_mode: bridge
+    ports:
+      - 8265:8265 # webUI port
+      - 8266:8266 # server port
+    environment:
+      - TZ=Asia/Jakarta
+      - PUID=1000
+      - PGID=1000
+      - UMASK_SET=002
+      - serverIP=10.10.50.84
+      - serverPort=8266
+      - webUIPort=8265
+      - internalNode=true
+      - inContainer=true
+      - ffmpegVersion=6
+      - nodeName=docker-4-helo-(server)
+      - NVIDIA_DRIVER_CAPABILITIES=all
+      - NVIDIA_VISIBLE_DEVICES=all
+    volumes:
+      - ./tdarr_server/app/server:/app/server
+      - ./tdarr_server/configs:/app/configs
+      - ./tdarr_server/logs:/app/logs
+      - /mnt/smb/Raptor:/mnt/smb/Raptor
+      - /mnt/smb/Viper:/mnt/smb/Viper
+    devices:
+      - /dev/dri:/dev/dri
+    deploy:
+      resources:
+        reservations:
+          devices:
+          - driver: nvidia
+            count: all
+            capabilities: [gpu]
+
+
+
+#  tdarr-node:
+#    container_name: tdarr-node
+#    image: ghcr.io/haveagitgat/tdarr_node:latest
+#    restart: unless-stopped
+#    network_mode: bridge
+#    environment:
+#      - TZ=Asia/Jakarta
+#      - PUID=1000
+#      - PGID=1000
+#      - UMASK_SET=002
+#      - nodeName=tdarr-server-node
+#      - serverIP=10.10.50.84
+#      - serverPort=8266
+#      - inContainer=true
+#      - ffmpegVersion=6
+#      - NVIDIA_DRIVER_CAPABILITIES=all
+#      - NVIDIA_VISIBLE_DEVICES=all
+#    volumes:
+#      - ./tdarr_node/configs:/app/configs
+#      - ./tdarr_node/logs:/app/logs
+#      - /mnt/smb/Raptor:/mnt/smb/Raptor
+#      - /mnt/smb/Viper:/mnt/smb/Viper
+#    devices:
+#      - /dev/dri:/dev/dri
+#    deploy:
+#      resources:
+#        reservations:
+#          devices:
+#          - driver: nvidia
+#            count: all
+#            capabilities: [gpu]
+```

@@ -1,0 +1,530 @@
+http:
+  routers:
+###networks
+    pihole:
+      entryPoints:
+        - "https"
+      rule: "Host(`pihole.katawarna.id`)"
+      tls: {}
+      service: pihole
+      middlewares:
+        - default-headers
+        - https-redirectscheme
+    NetAlertX:
+      entryPoints:
+        - "https"
+      rule: "Host(`NetAlertX.katawarna.id`)"
+      middlewares:
+        - default-headers
+        - https-redirectscheme
+      tls: {}
+      service: NetAlertX
+    speedtest-tracker:
+      entryPoints:
+        - "https"
+      rule: "Host(`speedtest-tracker.katawarna.id`)"
+      middlewares:
+        - default-headers
+        - https-redirectscheme
+      tls: {}
+      service: speedtest-tracker
+    openspeedtest:
+      entryPoints:
+        - "https"
+      rule: "Host(`openspeedtest.katawarna.id`)"
+      middlewares:
+        - default-headers
+        - https-redirectscheme
+      tls: {}
+      service: openspeedtest
+    uptimekuma:
+      entryPoints:
+        - "https"
+      rule: "Host(`uptimekuma.katawarna.id`)"
+      middlewares:
+        - default-headers
+        - https-redirectscheme
+      tls: {}
+      service: uptimekuma
+###HWmanagement
+    idrac-r730:
+      entryPoints:
+        - "https"
+      rule: "Host(`idrac-r730.katawarna.id`)"
+      middlewares:
+        - default-headers
+        - https-redirectscheme
+      tls: {}
+      service: idrac-r730
+    idrac-r510:
+      entryPoints:
+        - default-headers
+        - "https"
+      rule: "Host(`idrac-r510.katawarna.id`)"
+      middlewares:
+        - default-headers
+        - https-redirectscheme
+      tls: {}
+      service: idrac-r510
+    ipmi-x10ssl:
+      entryPoints:
+        - "https"
+      rule: "Host(`ipmi-x10ssl.katawarna.id`)"
+      middlewares:
+        - default-headers
+        - https-redirectscheme
+      tls: {}
+      service: ipmi-x10ssl
+###management
+    proxmox:
+      entryPoints:
+        - "https"
+      rule: "Host(`proxmox.katawarna.id`)"
+      middlewares:
+        - default-headers
+      tls: {}
+      service: proxmox
+    pdm:
+      entryPoints:
+        - "https"
+      rule: "Host(`pdm.katawarna.id`)"
+      middlewares:
+        - default-headers
+      tls: {}
+      service: pdm
+    portainer-galactica:
+      entryPoints:
+        - "https"
+      rule: "Host(`portainer-galactica.katawarna.id`)"
+      middlewares:
+        - default-headers
+        - https-redirectscheme
+      tls: {}
+      service: portainer-galactica
+    homepage:
+      entryPoints:
+        - "https"
+      rule: "Host(`homepage.katawarna.id`)"
+      middlewares:
+        - default-headers
+        - https-redirectscheme
+      tls: {}
+      service: homepage
+    idrac6-java:
+      entryPoints:
+        - "https"
+      rule: "Host(`idrac6-java.katawarna.id`)"
+      middlewares:
+        - default-headers
+        - https-redirectscheme
+      tls: {}
+      service: idrac6-java
+    cockpit-apollo:
+      entryPoints:
+        - "https"
+      rule: "Host(`cockpit-apollo.katawarna.id`)"
+      middlewares:
+        - default-headers
+        - https-redirectscheme
+      tls: {}
+      service: cockpit-apollo
+    cockpit-starbuck:
+      entryPoints:
+        - "https"
+      rule: "Host(`cockpit-starbuck.katawarna.id`)"
+      middlewares:
+        - default-headers
+        - https-redirectscheme
+      tls: {}
+      service: cockpit-starbuck
+    cockpit-athena:
+      entryPoints:
+        - "https"
+      rule: "Host(`cockpit-athena.katawarna.id`)"
+      middlewares:
+        - default-headers
+        - https-redirectscheme
+      tls: {}
+      service: cockpit-athena
+    cockpit-helo:
+      entryPoints:
+        - "https"
+      rule: "Host(`cockpit-helo.katawarna.id`)"
+      middlewares:
+        - default-headers
+        - https-redirectscheme
+      tls: {}
+      service: cockpit-helo
+###servicesEssentials
+    homeassistant:
+      entryPoints:
+        - "https"
+      rule: "Host(`homeassistant.katawarna.id`)"
+      middlewares:
+        - default-headers
+        - https-redirectscheme
+      tls: {}
+      service: homeassistant
+    immich:
+      entryPoints:
+        - "https"
+      rule: "Host(`immich.katawarna.id`)"
+      middlewares:
+        - default-headers
+        - https-redirectscheme
+      tls: {}
+      service: immich
+    frigate:
+      entryPoints:
+        - "https"
+      rule: "Host(`frigate.katawarna.id`)"
+      middlewares:
+        - default-headers
+        - https-redirectscheme
+      tls: {}
+      service: frigate
+###services
+    plex:
+      entryPoints:
+        - "https"
+      rule: "Host(`plex.katawarna.id`)"
+      middlewares:
+        - default-headers
+        - https-redirectscheme
+      tls: {}
+      service: plex
+    prowlarr:
+      entryPoints:
+        - "https"
+      rule: "Host(`prowlarr.katawarna.id`)"
+      middlewares:
+        - default-headers
+        - https-redirectscheme
+      tls: {}
+      service: prowlarr
+    radarr:
+      entryPoints:
+        - "https"
+      rule: "Host(`radarr.katawarna.id`)"
+      middlewares:
+        - default-headers
+        - https-redirectscheme
+      tls: {}
+      service: radarr
+    sonarr:
+      entryPoints:
+        - "https"
+      rule: "Host(`sonarr.katawarna.id`)"
+      middlewares:
+        - default-headers
+        - https-redirectscheme
+      tls: {}
+      service: sonarr
+    bazarr:
+      entryPoints:
+        - "https"
+      rule: "Host(`bazarr.katawarna.id`)"
+      middlewares:
+        - default-headers
+        - https-redirectscheme
+      tls: {}
+      service: bazarr
+    sabnzbd:
+      entryPoints:
+        - "https"
+      rule: "Host(`sabnzbd.katawarna.id`)"
+      middlewares:
+        - default-headers
+        - https-redirectscheme
+      tls: {}
+      service: sabnzbd
+    qbittorrent:
+      entryPoints:
+        - "https"
+      rule: "Host(`qbittorrent.katawarna.id`)"
+      middlewares:
+        - default-headers
+        - https-redirectscheme
+      tls: {}
+      service: qbittorrent
+    deluge:
+      entryPoints:
+        - "https"
+      rule: "Host(`deluge.katawarna.id`)"
+      middlewares:
+        - default-headers
+        - https-redirectscheme
+      tls: {}
+      service: deluge
+    jellyseerr:
+      entryPoints:
+        - "https"
+      rule: "Host(`jellyseerr.katawarna.id`)"
+      middlewares:
+        - default-headers
+        - https-redirectscheme
+      tls: {}
+      service: jellyseerr
+    overseerr:
+      entryPoints:
+        - "https"
+      rule: "Host(`overseerr.katawarna.id`)"
+      middlewares:
+        - default-headers
+        - https-redirectscheme
+      tls: {}
+      service: overseerr
+    prowlarr-stash:
+      entryPoints:
+        - "https"
+      rule: "Host(`prowlarr-stash.katawarna.id`)"
+      middlewares:
+        - default-headers
+        - https-redirectscheme
+      tls: {}
+      service: prowlarr-stash
+    jdownloader-stash:
+      entryPoints:
+        - "https"
+      rule: "Host(`jdownloader-stash.katawarna.id`)"
+      middlewares:
+        - default-headers
+        - https-redirectscheme
+      tls: {}
+      service: jdownloader-stash
+    qbittorrent-stash:
+      entryPoints:
+        - "https"
+      rule: "Host(`qbittorrent-stash.katawarna.id`)"
+      middlewares:
+        - default-headers
+        - https-redirectscheme
+      tls: {}
+      service: qbittorrent-stash
+    tdarr:
+      entryPoints:
+        - "https"
+      rule: "Host(`tdarr.katawarna.id`)"
+      middlewares:
+        - default-headers
+        - https-redirectscheme
+      tls: {}
+      service: tdarr
+
+
+
+  #region services
+  services:
+###networks
+    pihole:
+      loadBalancer:
+        servers:
+          - url: "http://10.0.1.12/admin"
+        passHostHeader: true
+    NetAlertX:
+      loadBalancer:
+        servers:
+          - url: "http://10.0.1.53:20211"
+        passHostHeader: true
+    speedtest-tracker:
+      loadBalancer:
+        servers:
+          - url: "http://10.0.1.53:8072"
+        passHostHeader: true
+    openspeedtest:
+      loadBalancer:
+        servers:
+          - url: "http://10.0.1.53:3000"
+        passHostHeader: true
+    uptimekuma:
+      loadBalancer:
+        servers:
+          - url: "http://10.0.1.53:3010"
+        passHostHeader: true
+###HWmanagement
+    idrac-r730:
+      loadBalancer:
+        servers:
+          - url: "https://10.0.2.100"
+        passHostHeader: true
+    idrac-r510:
+      loadBalancer:
+        servers:
+          - url: "https://10.0.2.105"
+        passHostHeader: true
+    ipmi-x10ssl:
+      loadBalancer:
+        servers:
+          - url: "https://10.0.2.110"
+        passHostHeader: true
+###management
+    proxmox:
+      loadBalancer:
+        servers:
+          - url: "https://10.0.1.101:8006"
+        passHostHeader: true
+    pdm:
+      loadBalancer:
+        servers:
+          - url: "https://10.0.1.120:8443"
+        passHostHeader: true
+    portainer-galactica:
+      loadBalancer:
+        servers:
+          - url: "https://10.0.1.51:9443"
+        passHostHeader: true
+    homepage:
+      loadBalancer:
+        servers:
+          - url: "http://10.0.1.53:3020"
+        passHostHeader: true
+    idrac6-java:
+      loadBalancer:
+        servers:
+          - url: "http://10.0.1.53:5800"
+        passHostHeader: true
+    cockpit-apollo:
+      loadBalancer:
+        servers:
+          - url: "https://10.0.1.51:9090"
+        passHostHeader: true
+    cockpit-starbuck:
+      loadBalancer:
+        servers:
+          - url: "https://10.0.1.52:9090"
+        passHostHeader: true
+    cockpit-athena:
+      loadBalancer:
+        servers:
+          - url: "https://10.0.1.53:9090"
+        passHostHeader: true
+    cockpit-helo:
+      loadBalancer:
+        servers:
+          - url: "https://10.0.1.54:9090"
+        passHostHeader: true
+###servicesEssentials
+    homeassistant:
+      loadBalancer:
+        servers:
+          - url: "http://10.0.1.50:8123"
+        passHostHeader: true
+    immich:
+      loadBalancer:
+        servers:
+          - url: "http://10.0.1.51:2283"
+        passHostHeader: true
+    frigate:
+      loadBalancer:
+        servers:
+          - url: "http://10.0.1.54:5000"
+        passHostHeader: true
+###services
+    plex:
+      loadBalancer:
+        servers:
+          - url: "http://10.0.1.30:32400"
+        passHostHeader: true
+    overseerr:
+      loadBalancer:
+        servers:
+          - url: "http://10.0.1.51:5500"
+        passHostHeader: true
+    jellyseerr:
+      loadBalancer:
+        servers:
+          - url: "http://10.0.1.51:5055"
+        passHostHeader: true
+    prowlarr:
+      loadBalancer:
+        servers:
+          - url: "http://10.0.1.51:9696"
+        passHostHeader: true
+    radarr:
+      loadBalancer:
+        servers:
+          - url: "http://10.0.1.51:7878"
+        passHostHeader: true
+    sonarr:
+      loadBalancer:
+        servers:
+          - url: "http://10.0.1.51:8989"
+        passHostHeader: true
+    bazarr:
+      loadBalancer:
+        servers:
+          - url: "http://10.0.1.51:6767"
+        passHostHeader: true
+    sabnzbd:
+      loadBalancer:
+        servers:
+          - url: "http://10.0.1.51:8090"
+        passHostHeader: true
+    qbittorrent:
+      loadBalancer:
+        servers:
+          - url: "http://10.0.1.51:8080"
+        passHostHeader: true
+    deluge:
+      loadBalancer:
+        servers:
+          - url: "http://10.0.1.51:8112"
+        passHostHeader: true
+    prowlarr-stash:
+      loadBalancer:
+        servers:
+          - url: "http://10.0.1.52:9696"
+        passHostHeader: true
+    jdownloader-stash:
+      loadBalancer:
+        servers:
+          - url: "http://10.0.1.52:5800"
+        passHostHeader: true
+    qbittorrent-stash:
+      loadBalancer:
+        servers:
+          - url: "http://10.0.1.52:8080"
+        passHostHeader: true
+    tdarr:
+      loadBalancer:
+        servers:
+          - url: "http://10.0.1.54:8265"
+        passHostHeader: true
+  #endregion
+
+
+
+  middlewares:
+    https-redirectscheme:
+      redirectScheme:
+        scheme: https
+        permanent: true
+    default-headers:
+      headers:
+        frameDeny: true
+        browserXssFilter: true
+        contentTypeNosniff: true
+        forceSTSHeader: true
+        stsIncludeSubdomains: true
+        stsPreload: true
+        stsSeconds: 15552000
+        customFrameOptionsValue: SAMEORIGIN
+        customRequestHeaders:
+          X-Forwarded-Proto: https
+    default-whitelist:
+      ipAllowList:
+        sourceRange:
+          - "10.0.0.0/24"
+          - "10.0.1.0/24"
+          - "10.0.2.0/24"
+          - "10.0.3.0/24"
+          - "10.0.4.0/24"
+          - "10.0.5.0/24"
+          - "10.10.10.0/24"
+          - "192.168.1.0/24"
+          - "172.16.0.0/12"
+    secured:
+      chain:
+        middlewares:
+          - default-whitelist
+          - default-headers

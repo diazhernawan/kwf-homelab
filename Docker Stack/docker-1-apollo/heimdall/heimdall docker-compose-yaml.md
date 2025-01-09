@@ -1,0 +1,17 @@
+```yaml
+---
+services:
+  heimdall:
+    image: lscr.io/linuxserver/heimdall:latest
+    container_name: heimdall
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Asia/Jakarta
+    volumes:
+      - ./config:/config
+    ports:
+      - "7080:80"
+      - "7043:443"
+    restart: unless-stopped
+```

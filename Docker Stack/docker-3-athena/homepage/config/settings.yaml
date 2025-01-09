@@ -1,0 +1,31 @@
+---
+# For configuration options and examples, please see:
+# https://gethomepage.dev/latest/configs/settings
+
+title: Homepage
+
+background:
+  image: https://cdna.artstation.com/p/assets/images/images/060/959/274/4k/robert-bonchune-bsg-galactica-beauty-rb-04sml.jpg?1679682866
+  blur: sm # sm, md, xl... see https://tailwindcss.com/docs/backdrop-blur
+  saturate: 5 # 0, 50, 100... see https://tailwindcss.com/docs/backdrop-saturate
+  brightness: 50 # 0, 50, 75... see https://tailwindcss.com/docs/backdrop-brightness
+  opacity: 65 # 0-100
+
+theme: dark
+color: slate
+
+useEqualHeights: true
+
+fiveColumns: true
+
+layout:
+  Bookmarks:
+    style: row
+    columns: 5
+  Network:
+    style: row
+    columns: 5
+
+providers:
+  openweathermap: openweathermapapikey
+  weatherapi: weatherapiapikey
