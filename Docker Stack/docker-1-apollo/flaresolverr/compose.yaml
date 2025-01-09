@@ -1,4 +1,3 @@
-```yaml
 ---
 services:
   flaresolverr:
@@ -13,4 +12,3 @@ services:
 networks:
   portainer_default:
     external: true
-```
