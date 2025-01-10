@@ -1,0 +1,73 @@
+services:
+  sabnzbd:
+    image: lscr.io/linuxserver/sabnzbd:latest
+    container_name: sabnzbd
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Asia/Jakarta
+    volumes:
+      - ./5_sabnzbd:/config
+      - 1_storage:/1_storage
+    ports:
+      - "8090:8080"
+    restart: unless-stopped
+    security_opt:
+      - apparmor=unconfined
+    healthcheck:
+      test: curl -f http://localhost:8080 || exit 1
+      interval: 30s
+      timeout: 10s
+      retries: 5
+
+  qbittorrent:
+    image: lscr.io/linuxserver/qbittorrent:latest
+    container_name: qbittorrent
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Asia/Jakarta
+      - WEBUI_PORT=8080
+    volumes:
+      - ./7_qbittorrent:/config
+      - 1_storage:/1_storage
+    ports:
+      - "8080:8080"
+      - "6881:6881"
+      - "6881:6881/udp"
+    restart: unless-stopped
+    healthcheck:
+      test: curl -f http://localhost:8080 || exit 1
+      interval: 30s
+      timeout: 10s
+      retries: 5
+
+  deluge:
+    image: lscr.io/linuxserver/deluge:latest
+    container_name: deluge
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Asia/Jakarta
+      - DELUGE_LOGLEVEL=error
+    volumes:
+      - ./8_deluge:/config
+      - 1_storage:/1_storage
+    ports:
+      - "8112:8112"
+      - "6882:6881"
+      - "6882:6881/udp"
+      - "58846:58846"
+    restart: unless-stopped
+
+networks:
+  portainer_default:
+    external: true
+
+volumes:
+  1_storage:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: /mnt/smb/Raptor/1_storage
