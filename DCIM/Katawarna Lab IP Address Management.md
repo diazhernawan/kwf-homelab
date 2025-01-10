@@ -1,6 +1,6 @@
 
 ---
-IP address management
+IP Address Management
 ----
 **Main (10.0.0.0/24) VLAN 1**
 10.0.0.0/24
