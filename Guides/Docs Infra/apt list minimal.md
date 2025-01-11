@@ -9,25 +9,16 @@ aptitude \
 git \
 wget \
 curl \
-flatpak \
-snapd \
 nano \
 vim \
 neofetch \
-tmux \
 htop \
-powertop \
-htop \
-gdisk \
-hdparm \
-rsync \
-smartmontools \
 qemu-guest-agent \
 zsh \
 nfs-common \
 cifs-utils \
 cockpit \
-ethtool \
-python3 \
-python3-pip
+iputils-ping \
+dnsutils \
+traceroute \
 ```
