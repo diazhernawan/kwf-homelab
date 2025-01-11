@@ -16,6 +16,6 @@ htop \
 qemu-guest-agent \
 zsh \
 nfs-common \
-samba \
+cifs-utils \
 cockpit \
 ```
