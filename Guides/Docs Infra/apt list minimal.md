@@ -2,7 +2,7 @@
 
 **for full server fresh vm install**
 
-```
+```bash
 sudo apt update && sudo apt install -y \
 sudo \
 aptitude \
