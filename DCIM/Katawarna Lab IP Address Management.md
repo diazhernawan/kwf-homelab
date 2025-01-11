@@ -35,9 +35,9 @@ Networking HW
 **Servers (10.0.1.0/24) VLAN 1001**
 ----
 **Networking SW (10.0.1.10 - 10.0.1.19)**
-10.0.1.11 tailscale [[vm 100 (tailscale-core-kwf)]]
-10.0.1.12 pihole  [[lxc 101 (pihole-1)]]
-10.0.1.14 cloudflared [[lxc 102 (cloudflared)]]
+10.0.1.11 tailscale
+10.0.1.12 pihole
+10.0.1.14 cloudflared
 
 **NAS (10.0.1.20 - 10.0.1.29)**
 10.0.1.20 Raptor
@@ -47,20 +47,21 @@ Networking HW
 
 LXC & VM (10.0.1.30 - 10.0.1.99)
 VM (10.0.1.30 - 10.0.1.49)
-10.0.1.30 plex [[lxc 105 (plex)]]
-10.0.1.31 jellyfin [[lxc 104 (jellyfin)]]
+10.0.1.30 plex
+10.0.1.31 jellyfin
 
 VM (10.0.1.50 - 10.0.1.99)
-10.0.1.50 Homeassistant [[vm 250 (homeassistant)]]
-10.0.1.51 docker-1-apollo [[vm 151 (docker-1-apollo)]]
-10.0.1.52 docker-2-starbuck [[vm 152 (docker-2-starbuck)]]
-10.0.1.53 docker-3-athena [[vm 153 (docker-3-athena)]]
-10.0.1.54 docker-4-helo [[vm 154 (docker-4-helo)]]
+10.0.1.50 Homeassistant
+10.0.1.51 docker-1-apollo
+10.0.1.52 docker-2-starbuck
+10.0.1.53 docker-3-athena
+10.0.1.54 docker-4-helo
+10.0.1.55 docker-5-husker
 
 Hypervisors (10.0.1.100 - 10.0.1.120)
-10.0.1.101 prox01 [[Prox01]]
-10.0.1.102 prox02 [[Prox01]]
-10.0.1.120 PDM [[lxc 200 (pdm)]]
+10.0.1.101 prox01
+10.0.1.102 prox02
+10.0.1.120 PDM
 
 Workstations (10.0.1.210 - 10.0.1.220)
 10.0.1.201 kwf-ws-1
