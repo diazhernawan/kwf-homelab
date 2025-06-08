@@ -2,8 +2,8 @@
 
 ## Reminder: Before you start, ensure that:
 
-> 💡 **Reminder:**  
-> Install **Docker** & **Portainer**, and **create your bind-mount folders** (`config/`, `wp-app/`, `db-init/`) **before** running `docker compose up`.
+💡 **Reminder:**  
+Install **Docker** & **Portainer**, and **create your bind-mount folders** (`config/`, `wp-app/`, `db-init/`) **before** running `docker compose up`.
 
 ---
 
