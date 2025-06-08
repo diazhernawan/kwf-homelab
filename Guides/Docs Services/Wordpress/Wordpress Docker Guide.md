@@ -16,6 +16,12 @@
   * `db_data/`
 * A `.env` file with `IP`, `DB_NAME`, and `DB_ROOT_PASSWORD`
 
+```bash
+mkdir -p config wp-app wp-data db_data
+touch .env
+```
+
+
 ---
 
 ## 🗂️ Directory Structure
@@ -135,6 +141,7 @@ networks:
 
    ```bash
    mkdir -p config wp-app wp-data db_data
+   touch .env
    ```
 3. **Populate**:
 
