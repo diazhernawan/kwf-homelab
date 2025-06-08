@@ -39,37 +39,32 @@ DB_ROOT_PASSWORD=your_root_password
 
 ```yaml
 ---
+version: "3.9"
+
 services:
   wp:
     image: wordpress:latest
-    container_name: wordpress
     restart: unless-stopped
     env_file:
       - .env
     ports:
       - "${IP}:8082:80"
     volumes:
-      - ./config/php.conf.ini:/usr/local/etc/php/conf.d/conf.ini
+      - ./config/php.conf.ini:/usr/local/etc/php/conf.d/conf.ini:ro
       - ./wp-app:/var/www/html
     environment:
       WORDPRESS_DB_HOST: db
-      WORDPRESS_DB_NAME: "${DB_NAME}"
-      WORDPRESS_DB_USER: root
-      WORDPRESS_DB_PASSWORD: "${DB_ROOT_PASSWORD}"
     depends_on:
       db:
         condition: service_healthy
     healthcheck:
       test: ["CMD-SHELL", "curl -f http://localhost/ || exit 1"]
-      interval: 30s
-      timeout: 10s
-      retries: 3
+      interval: 30s; timeout: 10s; retries: 3
     networks:
       - wordpress-network
 
   pma:
     image: phpmyadmin/phpmyadmin
-    container_name: phpmyadmin
     restart: unless-stopped
     env_file:
       - .env
@@ -78,7 +73,6 @@ services:
     environment:
       PMA_HOST: db
       PMA_PORT: 3306
-      MYSQL_ROOT_PASSWORD: "${DB_ROOT_PASSWORD}"
       UPLOAD_LIMIT: "50M"
     depends_on:
       db:
@@ -88,7 +82,6 @@ services:
 
   db:
     image: mysql:latest
-    container_name: mysql
     restart: unless-stopped
     env_file:
       - .env
@@ -99,16 +92,14 @@ services:
       - --character-set-server=utf8mb4
       - --collation-server=utf8mb4_unicode_ci
     volumes:
-      - ./db-init:/docker-entrypoint-initdb.d
       - ./db-data:/var/lib/mysql
+      - ./db-init:/docker-entrypoint-initdb.d:ro
     environment:
       MYSQL_DATABASE: "${DB_NAME}"
       MYSQL_ROOT_PASSWORD: "${DB_ROOT_PASSWORD}"
     healthcheck:
       test: ["CMD", "mysqladmin", "ping", "--silent"]
-      interval: 30s
-      timeout: 10s
-      retries: 5
+      interval: 30s; timeout: 10s; retries: 5
     networks:
       - wordpress-network
 
