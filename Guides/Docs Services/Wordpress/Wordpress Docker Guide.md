@@ -50,7 +50,7 @@ services:
       - "${IP}:8082:80"
     volumes:
       - ./config/php.conf.ini:/usr/local/etc/php/conf.d/conf.ini
-      - wp_app:/var/www/html
+      - ./wp_app:/var/www/html
     environment:
       WORDPRESS_DB_HOST: db
     depends_on:
@@ -95,7 +95,7 @@ services:
       - --character-set-server=utf8mb4
       - --collation-server=utf8mb4_unicode_ci
     volumes:
-      - db_data:/var/lib/mysql
+      - ./db_data:/var/lib/mysql
     environment:
       MYSQL_DATABASE: "${DB_NAME}"
       MYSQL_ROOT_PASSWORD: "${DB_ROOT_PASSWORD}"
@@ -110,6 +110,7 @@ services:
 networks:
   wordpress-network:
     external: true
+
 ```
 
 ## Usage
