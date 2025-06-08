@@ -9,7 +9,8 @@
 >   * `config/`
 >   * `wp-app/`
 >   * `db-init/`
-> * You have a valid `.env` file with `IP`, `DB_NAME`, and `DB_ROOT_PASSWORD`.
+
+* You have a valid `.env` file with `IP`, `DB_NAME`, and `DB_ROOT_PASSWORD`.
 
 ## Directory Structure
 
