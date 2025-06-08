@@ -22,7 +22,7 @@ Your project should look like this:
 │   └── php.conf.ini
 ├── wp-app/          # WordPress codebase (themes, plugins, uploads…)
 ├── db-init/         # *.sql or *.sh scripts for database initialization
-├── docker-compose.yaml
+├── compose.yaml
 └── .env             # IP, DB_NAME, DB_ROOT_PASSWORD
 ```
 
