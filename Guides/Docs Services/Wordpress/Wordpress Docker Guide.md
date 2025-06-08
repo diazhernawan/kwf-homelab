@@ -1,11 +1,11 @@
 # WordPress Docker Compose Tutorial
 
-> **Reminder**: Before you start, ensure that:
->
-> * Docker Engine and Docker Compose v2+ are installed.
-> * Portainer is installed and running (optional but recommended).
-> * You have created the necessary bind mount directories on your host:
->
+**Reminder**: Before you start, ensure that:
+
+* Docker Engine and Docker Compose v2+ are installed.
+* Portainer is installed and running (optional but recommended).
+* You have created the necessary bind mount directories on your host:
+
 >   * `config/`
 >   * `wp-app/`
 >   * `db-init/`
