@@ -16,11 +16,10 @@
   * `db_data/`
 * A `.env` file with `IP`, `DB_NAME`, and `DB_ROOT_PASSWORD`
 
-```bash
-mkdir -p config wp-app wp-data db_data
-touch .env
-```
-
+   ```bash
+   mkdir -p config wp-app wp-data db_data
+   touch .env
+   ```
 
 ---
 
@@ -48,6 +47,18 @@ DB_ROOT_PASSWORD=supersecret123
 ```
 
 > **Tip:** Keep this file out of Git!
+
+---
+
+## 📝 Sample `config/php.conf.ini`
+
+```ini
+file_uploads = On
+memory_limit = 500M
+upload_max_filesize = 30M
+post_max_size = 30M
+max_execution_time = 600
+```
 
 ---
 
@@ -137,7 +148,7 @@ networks:
 ## 🚀 Usage
 
 1. **Clone** this repo.
-2. **Create** bind-mount folders:
+2. **Create** bind-mount folders and the `.env` file:
 
    ```bash
    mkdir -p config wp-app wp-data db_data
