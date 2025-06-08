@@ -5,15 +5,12 @@
 💡 **Reminder:**  
 Install **Docker** & **Portainer**, and **create your bind-mount folders** (`config/`, `wp-app/`, `db-init/`) **before** running `docker compose up`.
 
----
-
-## Step 1 – Prerequisites
-
+```
 1. **Host OS**: any modern Linux or macOS (Windows WSL2 also works)  
 2. **Docker Engine** (latest stable)  
 3. **Docker Compose v2+** (CLI plugin: `docker compose`)  
 4. **Portainer** (optional GUI)
-
+```
 
 
 
