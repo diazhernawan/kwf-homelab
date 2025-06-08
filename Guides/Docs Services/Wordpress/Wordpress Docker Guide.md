@@ -1,96 +1,138 @@
-# **WordPress Docker Compose Tutorial**
+# WordPress Docker Compose Tutorial
 
-## Reminder: Before you start, ensure that:
+> **Reminder**: Before you start, ensure that:
+>
+> * Docker Engine and Docker Compose v2+ are installed.
+> * Portainer is installed and running (optional but recommended).
+> * You have created the necessary bind mount directories on your host:
+>
+>   * `config/`
+>   * `wp-app/`
+>   * `db-init/`
+> * You have a valid `.env` file with `IP`, `DB_NAME`, and `DB_ROOT_PASSWORD`.
 
-💡 **Reminder:**  
-Install **Docker** & **Portainer**, and **create your bind-mount folders** (`config/`, `wp-app/`, `db-init/`) **before** running `docker compose up`.
+## Directory Structure
 
-```
-1. **Host OS**: any modern Linux or macOS (Windows WSL2 also works)  
-2. **Docker Engine** (latest stable)  
-3. **Docker Compose v2+** (CLI plugin: `docker compose`)  
-4. **Portainer** (optional GUI)
-```
-
-
-
-
-
-
-
-
-
-
-## Step 2 - Install & configure Tailscale
-
-
-1. Tailscale dependencies
-```
-apt install curl ethtool networkd-dispatcher sudo
-```
-
-2. Add Tailscale's package signing key and repository
-```bash
-curl -fsSL https://pkgs.tailscale.com/stable/debian/bookworm.noarmor.gpg | sudo tee /usr/share/keyrings/tailscale-archive-keyring.gpg >/dev/null
-
-curl -fsSL https://pkgs.tailscale.com/stable/debian/bookworm.tailscale-keyring.list | sudo tee /etc/apt/sources.list.d/tailscale.list
-```
-
-3. Install Tailscale
-```bash
-sudo apt-get update
-sudo apt-get install tailscale
-```
-
-4. Configure IP forwarding
-```bash
-echo 'net.ipv4.ip_forward = 1' | sudo tee -a /etc/sysctl.d/99-tailscale.conf
-echo 'net.ipv6.conf.all.forwarding = 1' | sudo tee -a /etc/sysctl.d/99-tailscale.conf
-sudo sysctl -p /etc/sysctl.d/99-tailscale.conf
-```
-
-5. Firewall allow masquerading
-```bash
-firewall-cmd --permanent --add-masquerade
-```
-
-## Step 3 - Activate Tailscale subnets
-
-
-6. Connect to Tailscale and authenticate
-```bash
-tailscale up --advertise-routes=10.0.1.0/24,10.0.2.0/24,10.0.3.0/24,10.0.4.0/24 --advertise-exit-node --accept-routes
-```
-
-7. Reboot
-
-## Step 4 - Tailscale Site-to-Site Config
-
-8. Configure GRO / ETHTOOL
+Your project should look like this:
 
 ```bash
-NETDEV=$(ip route show 0/0 | cut -f5 -d' ')
-sudo ethtool -K $NETDEV rx-udp-gro-forwarding on rx-gro-list off
+.
+├── config/          # PHP tweaks, nginx vhosts, etc.
+│   └── php.conf.ini
+├── wp-app/          # WordPress codebase (themes, plugins, uploads…)
+├── db-init/         # *.sql or *.sh scripts for database initialization
+├── docker-compose.yaml
+└── .env             # IP, DB_NAME, DB_ROOT_PASSWORD
 ```
 
-9. Configure autostart on boot
-```bash
-printf '#!/bin/sh\n\nethtool -K %s rx-udp-gro-forwarding on rx-gro-list off \n' "$(ip route show 0/0 | cut -f5 -d" ")" | sudo tee /etc/networkd-dispatcher/routable.d/50-tailscale
-sudo chmod 755 /etc/networkd-dispatcher/routable.d/50-tailscale
+## .env File
+
+```
+IP=0.0.0.0
+DB_NAME=wpdbtest
+DB_ROOT_PASSWORD=your_root_password
 ```
 
-11. Test the created script
-```bash
-sudo /etc/networkd-dispatcher/routable.d/50-tailscale
-test $? -eq 0 || echo 'An error occurred.'
+## docker-compose.yaml
+
+```yaml
+version: "3.8"
+
+services:
+  wp:
+    image: wordpress:latest
+    restart: unless-stopped
+    env_file:
+      - .env
+    ports:
+      - "${IP}:8082:80"
+    volumes:
+      - ./config/php.conf.ini:/usr/local/etc/php/conf.d/conf.ini
+      - wp_app:/var/www/html
+    environment:
+      WORDPRESS_DB_HOST: db
+    depends_on:
+      db:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost/ || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    networks:
+      - wordpress-network
+
+  pma:
+    image: phpmyadmin/phpmyadmin
+    restart: unless-stopped
+    env_file:
+      - .env
+    ports:
+      - "${IP}:8081:80"
+    environment:
+      PMA_HOST: db
+      PMA_PORT: 3306
+      UPLOAD_LIMIT: "50M"
+    depends_on:
+      db:
+        condition: service_started
+    networks:
+      - wordpress-network
+
+  db:
+    image: mysql:latest
+    restart: unless-stopped
+    env_file:
+      - .env
+    ports:
+      - "${IP}:3306:3306"
+    command:
+      - --default_authentication_plugin=mysql_native_password
+      - --character-set-server=utf8mb4
+      - --collation-server=utf8mb4_unicode_ci
+    volumes:
+      - db_data:/var/lib/mysql
+    environment:
+      MYSQL_DATABASE: "${DB_NAME}"
+      MYSQL_ROOT_PASSWORD: "${DB_ROOT_PASSWORD}"
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "--silent"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+    networks:
+      - wordpress-network
+
+networks:
+  wordpress-network:
+    external: true
+
+volumes:
+  wp_app:
+  db_data:
 ```
 
-12.  Re-enable Tailscale
-```bash
-tailscale up --advertise-routes=10.0.1.0/24,10.0.2.0/24,10.0.3.0/24,10.0.4.0/24 --advertise-exit-node -snat-subnet-routes=false --accept-routes
-```
+## Usage
 
-13. Approve subnets in tailscale.com machines
+1. Clone or copy this repo.
+2. Create the bind mount directories on the host:
 
-14. Configure the static route in UDM PRO / Firewall / Router
+   ```bash
+   mkdir -p config wp-app db-init
+   ```
+3. Populate `config/php.conf.ini`, your WordPress files in `wp-app/`, and any init scripts in `db-init/`.
+4. Fill in your `.env` file with correct values.
+5. Start the stack:
 
+   ```bash
+   docker compose up -d
+   ```
+6. (Optional) Use Portainer to manage your containers via the web UI.
+
+## Best Practices
+
+* **Avoid `container_name`**: Let Compose auto-generate names for better scaling.
+* **Use named volumes**: Improves portability and data management.
+* **Healthchecks**: Ensure dependent services are ready before starting.
+* **Networks**: Use external networks for multi-stack communication.
+* **Environment files**: Keep secrets out of version control by using `.env`.
