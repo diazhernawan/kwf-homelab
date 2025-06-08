@@ -107,10 +107,6 @@ services:
 networks:
   wordpress-network:
     external: true
-
-volumes:
-  wp_app:
-  db_data:
 ```
 
 ## Usage
@@ -132,8 +128,6 @@ volumes:
 
 ## Best Practices
 
-* **Avoid `container_name`**: Let Compose auto-generate names for better scaling.
-* **Use named volumes**: Improves portability and data management.
 * **Healthchecks**: Ensure dependent services are ready before starting.
 * **Networks**: Use external networks for multi-stack communication.
 * **Environment files**: Keep secrets out of version control by using `.env`.
