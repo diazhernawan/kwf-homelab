@@ -46,7 +46,7 @@ services:
       - wordpress-network
 
   db:
-    image: mysql:latest
+    image: mysql:8.4
     container_name: wordpress-mysqldb
     restart: unless-stopped
     env_file:
@@ -54,17 +54,18 @@ services:
     ports:
       - "${IP}:3306:3306"
     command:
-      - --default_authentication_plugin=mysql_native_password
+      - mysqld
+      - --mysql-native-password=ON
       - --character-set-server=utf8mb4
       - --collation-server=utf8mb4_unicode_ci
     volumes:
-      - ./db_data:/var/lib/mysql
+      - ./db-data:/var/lib/mysql
       - ./wp-data:/docker-entrypoint-initdb.d:ro
     environment:
       MYSQL_DATABASE: "${DB_NAME}"
       MYSQL_ROOT_PASSWORD: "${DB_ROOT_PASSWORD}"
     healthcheck:
-      test: ["CMD", "mysqladmin", "ping", "--silent"]
+      test: ["CMD-SHELL", "mysqladmin ping -h localhost -u root -p\"${DB_ROOT_PASSWORD}\" > /dev/null 2>&1"]
       interval: 30s
       timeout: 10s
       retries: 5
