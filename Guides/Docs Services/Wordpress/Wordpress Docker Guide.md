@@ -25,6 +25,7 @@
 ├── compose.yaml          # Compose V2 file (no version header!)
 ├── .env                  # env vars
 ├── config/
+│   └── php.conf.ini      # PHP tweaks (ro mount)
 ├── wp-app/               # WordPress core, themes, plugins…
 ├── wp-data/              # DB init scripts (e.g. init.sql)
 └── db_data/              # MySQL data dir (empty on first run)
