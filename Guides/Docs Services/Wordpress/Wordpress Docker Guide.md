@@ -1,49 +1,57 @@
 # WordPress Docker Compose Tutorial
 
-**Reminder**: Before you start, ensure that:
+> **Bind-mount bliss & Compose V2 ready!**
 
-* Docker Engine and Docker Compose v2+ are installed.
-* Portainer is installed and running (optional but recommended).
-* You have created the necessary bind mount directories on your host:
+---
 
->   * `config/`
->   * `wp-app/`
->   * `db-init/`
+## Prerequisites
 
-* You have a valid `.env` file with `IP`, `DB_NAME`, and `DB_ROOT_PASSWORD`.
+* Docker Engine & Docker Compose v2+ installed
+* (Optional) Portainer running for GUI container management
+* Created bind-mount directories on host:
 
-## Directory Structure
+  * `config/`
+  * `wp-app/`
+  * `wp-data/`
+  * `db_data/`
+* A `.env` file with `IP`, `DB_NAME`, and `DB_ROOT_PASSWORD`
 
-Your project should look like this:
+---
+
+## 🗂️ Directory Structure
 
 ```bash
-docker_volumes/wordpress
 .
-├── config/          # PHP tweaks, nginx vhosts, etc.
-│   └── php.conf.ini
-├── wp-app/          # WordPress codebase (themes, plugins, uploads…)
-├── db-init/         # *.sql or *.sh scripts for database initialization
-├── compose.yaml
-└── .env             # IP, DB_NAME, DB_ROOT_PASSWORD
+├── compose.yaml          # Compose V2 file (no version header!)
+├── .env                  # env vars
+├── config/
+│   └── php.conf.ini      # PHP tweaks (ro mount)
+├── wp-app/               # WordPress core, themes, plugins…
+├── wp-data/              # DB init scripts (e.g. init.sql)
+└── db_data/              # MySQL data dir (empty on first run)
 ```
 
-## .env File
+---
 
-```
+## 🔒 Example `.env`
+
+```dotenv
 IP=0.0.0.0
 DB_NAME=wpdbtest
-DB_ROOT_PASSWORD=your_root_password
+DB_ROOT_PASSWORD=supersecret123
 ```
 
-## docker-compose.yaml
+> **Tip:** Keep this file out of Git!
+
+---
+
+## 🐳 `compose.yaml`
 
 ```yaml
----
-version: "3.9"
-
 services:
   wp:
     image: wordpress:latest
+    container_name: wordpress
     restart: unless-stopped
     env_file:
       - .env
@@ -54,17 +62,23 @@ services:
       - ./wp-app:/var/www/html
     environment:
       WORDPRESS_DB_HOST: db
+      WORDPRESS_DB_NAME: "${DB_NAME}"
+      WORDPRESS_DB_USER: root
+      WORDPRESS_DB_PASSWORD: "${DB_ROOT_PASSWORD}"
     depends_on:
       db:
         condition: service_healthy
     healthcheck:
       test: ["CMD-SHELL", "curl -f http://localhost/ || exit 1"]
-      interval: 30s; timeout: 10s; retries: 3
+      interval: 30s
+      timeout: 10s
+      retries: 3
     networks:
       - wordpress-network
 
   pma:
     image: phpmyadmin/phpmyadmin
+    container_name: wordpress-phpmyadmin
     restart: unless-stopped
     env_file:
       - .env
@@ -82,6 +96,7 @@ services:
 
   db:
     image: mysql:latest
+    container_name: wordpress-mysqldb
     restart: unless-stopped
     env_file:
       - .env
@@ -92,41 +107,57 @@ services:
       - --character-set-server=utf8mb4
       - --collation-server=utf8mb4_unicode_ci
     volumes:
-      - ./db-data:/var/lib/mysql
-      - ./db-init:/docker-entrypoint-initdb.d:ro
+      - ./db_data:/var/lib/mysql
+      - ./wp-data:/docker-entrypoint-initdb.d:ro
     environment:
       MYSQL_DATABASE: "${DB_NAME}"
       MYSQL_ROOT_PASSWORD: "${DB_ROOT_PASSWORD}"
     healthcheck:
       test: ["CMD", "mysqladmin", "ping", "--silent"]
-      interval: 30s; timeout: 10s; retries: 5
+      interval: 30s
+      timeout: 10s
+      retries: 5
     networks:
       - wordpress-network
 
 networks:
   wordpress-network:
+  proxy:
     external: true
 ```
 
-## Usage
+---
 
-1. Clone or copy this repo.
-2. Create the bind mount directories on the host:
+## 🚀 Usage
+
+1. **Clone** this repo.
+2. **Create** bind-mount folders:
 
    ```bash
-   mkdir -p config wp-app db-init
+   mkdir -p config wp-app wp-data db_data
    ```
-3. Populate `config/php.conf.ini`, your WordPress files in `wp-app/`, and any init scripts in `db-init/`.
-4. Fill in your `.env` file with correct values.
-5. Start the stack:
+3. **Populate**:
+
+   * `config/php.conf.ini` → PHP tweaks
+   * `wp-app/` → WordPress code
+   * `wp-data/` → DB init scripts
+4. **Fill in** `.env` with real values.
+5. **Start** containers:
 
    ```bash
    docker compose up -d
    ```
-6. (Optional) Use Portainer to manage your containers via the web UI.
+6. (Optional) **Portainer** for web UI container management.
 
-## Best Practices
+---
 
-* **Healthchecks**: Ensure dependent services are ready before starting.
-* **Networks**: Use external networks for multi-stack communication.
-* **Environment files**: Keep secrets out of version control by using `.env`.
+## 💡 Best Practices
+
+* **Healthchecks** prevent race-conditions.
+* **External networks** for multi-stack setups (e.g. Traefik).
+* **Env files** keep secrets off Git.
+* **Bind mounts only**—code & data remain host-editable.
+
+---
+
+*Happy deploying—your WordPress stack just got ninja-level!* 🚀
