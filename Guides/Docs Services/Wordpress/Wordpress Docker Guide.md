@@ -17,6 +17,7 @@
 Your project should look like this:
 
 ```bash
+docker_volumes/wordpress
 .
 ├── config/          # PHP tweaks, nginx vhosts, etc.
 │   └── php.conf.ini
