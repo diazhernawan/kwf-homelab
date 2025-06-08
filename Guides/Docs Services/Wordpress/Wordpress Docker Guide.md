@@ -42,6 +42,7 @@ DB_ROOT_PASSWORD=your_root_password
 services:
   wp:
     image: wordpress:latest
+    container_name: wordpress
     restart: unless-stopped
     env_file:
       - .env
@@ -65,6 +66,7 @@ services:
 
   pma:
     image: phpmyadmin/phpmyadmin
+    container_name: phpmyadmin
     restart: unless-stopped
     env_file:
       - .env
@@ -82,6 +84,7 @@ services:
 
   db:
     image: mysql:latest
+    container_name: mysql
     restart: unless-stopped
     env_file:
       - .env
