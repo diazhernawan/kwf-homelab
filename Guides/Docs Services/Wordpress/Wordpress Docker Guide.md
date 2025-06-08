@@ -38,8 +38,7 @@ DB_ROOT_PASSWORD=your_root_password
 ## docker-compose.yaml
 
 ```yaml
-version: "3.8"
-
+---
 services:
   wp:
     image: wordpress:latest
