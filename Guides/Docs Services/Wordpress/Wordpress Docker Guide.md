@@ -4,35 +4,26 @@
 
 ## 🚀 Usage
 
-1. **Clone** this repo.
+1. **Go to Directory** ./docker_volumes/wordpress
 2. **Clean** db-data & wp-data:
 
    ```bash
    sudo rm -rf wp-data db-data
    ```
-3. **Clean** db-data & wp-data:
+3. **Recreate** db-data & wp-data:
 
    ```bash
    sudo mkdir wp-data db-data
    ```
-4. **Create** bind-mount folders and the `.env` file:
-
-   ```bash
-   mkdir -p config wp-app wp-data db-data
-   touch .env
-   ```
-5. **Populate**:
-
+4. **Populate**:
    * `config/php.conf.ini` → PHP tweaks
-   * `wp-app/` → WordPress code
-   * `wp-data/` → DB init scripts
-6. **Fill in** `.env` with real values.
-7. **Start** containers:
+   * `.env` → Populate with IP / DB_NAME / DB_ROOT_PASSWORD
+5. **Start** containers:
 
    ```bash
    docker compose up -d
    ```
-8. (Optional) **Portainer** for web UI container management.
+6. (Optional) **Portainer** for web UI container management.
 
 ---
 
