@@ -1,52 +1,72 @@
-# OpenLiteSpeed + WordPress + MariaDB + phpMyAdmin (Docker Compose)
+# 🚀 OpenLiteSpeed + WordPress + MariaDB + phpMyAdmin (Docker Compose)
 
-> **Production-ready Docker stack for high-performance WordPress with persistent storage and secure networking**
+**Production-ready Docker stack for high-performance WordPress with persistent storage and secure networking**
+
 
 ---
 
-\$1\`\`\`
+## 📂 Directory Structure
+
+---
+
+```
 ols-server/
 ├── db/                # MariaDB persistent data
 ├── ols-data/          # WordPress files (site code, plugins, uploads)
 ├── ols-config/
 │   ├── conf/          # OLS main configs
 │   ├── logs/          # OLS logs
-│   └── admin\_conf/    # OLS WebAdmin user persistence
+│   └── admin_conf/    # OLS WebAdmin user persistence
 ├── php-config/        # Custom php.ini for PHP settings (uploads, etc)
 ├── .env               # Environment variables
 └── compose.yaml       # Docker Compose file
-
-````
-
+```
 
 ---
 
 ## 1. Project Preparation
 
 **1.1. Change to your working directory:**
+
 ```bash
 cd ols-server
-````
+```
 
-\$1\`\`\`bash
-mkdir -p db ols-data ols-config/conf ols-config/logs ols-config/admin\_conf php-config
+**1.2. Create the required folders:**
 
-````
-
+```bash
+mkdir -p db ols-data ols-config/conf ols-config/logs ols-config/admin_conf php-config
+```
 
 ---
 
 ## 2. Download WordPress Into `ols-data`
+
 ```bash
 curl -LO https://wordpress.org/latest.tar.gz
 tar -xzf latest.tar.gz
 mv wordpress/* ols-data/
 rm -rf wordpress latest.tar.gz
-````
+```
 
 ---
 
-\$1
+## 3. Set Permissions for WordPress Folder
+
+> Ensure both your host user and the container can read/write WordPress files.
+
+```bash
+sudo chown -R $USER:$USER ols-data
+sudo chmod -R 755 ols-data
+```
+
+* If you see permission errors when updating plugins/themes/uploads, try:
+
+  ```bash
+  sudo chmod -R 775 ols-data
+  # Or, as a last resort for debugging ONLY:
+  sudo chmod -R 777 ols-data
+  ```
 
 ---
 
@@ -74,7 +94,7 @@ rm -rf wordpress latest.tar.gz
 4. **Check in WordPress:**
    Go to Media > Add New, or WordPress Importer—you’ll see the new 5GB limit!
 
-\$2
+---
 
 ## 5. Create Your `.env` File
 
@@ -104,7 +124,7 @@ services:
       - ./ols-config/conf:/usr/local/lsws/conf
       - ./ols-config/logs:/usr/local/lsws/logs
       - ./ols-config/admin_conf:/usr/local/lsws/admin/conf
-      - ./config/php.ini:/usr/local/etc/php/conf.d/custom.ini  # <--- If you did Step 3a
+      - ./php-config/php.ini:/usr/local/etc/php/conf.d/custom.ini  # <--- If you did Step 4
     environment:
       - TZ=Asia/Jakarta
     networks:
