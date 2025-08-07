@@ -103,6 +103,8 @@ sudo nano php.ini
 
 ## 5. Create Your `.env` File
 
+**5.1 sudo nano .env**
+
 ```ini
 # .env
 MYSQL_DATABASE=wordpress_database
