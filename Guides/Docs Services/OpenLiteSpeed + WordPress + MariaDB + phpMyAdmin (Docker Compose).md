@@ -111,7 +111,7 @@ services:
       - ./ols-config/conf:/usr/local/lsws/conf
       - ./ols-config/logs:/usr/local/lsws/logs
       - ./ols-config/admin_conf:/usr/local/lsws/admin/conf
-      - ./php-config/php.ini:/usr/local/etc/php/conf.d/custom.ini  # <--- If you did Step 4
+      - ./php-config/php.ini:/usr/local/lsws/lsphp83/etc/php/8.3/litespeed/php.ini
     environment:
       - TZ=Asia/Jakarta
     networks:
