@@ -103,7 +103,9 @@ sudo nano php.ini
 
 ## 5. Create Your `.env` File
 
-**5.1 sudo nano .env**
+```bash
+sudo nano .env
+```
 
 ```ini
 # .env
