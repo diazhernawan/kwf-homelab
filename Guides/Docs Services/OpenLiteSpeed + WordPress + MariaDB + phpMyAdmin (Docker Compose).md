@@ -87,6 +87,10 @@ sudo chmod -R 755 ols-data
 cd php-config
 ```
 **4.2 Create php.ini**
+```bash
+cd sudo nano php.ini
+```
+**> Content of php.ini**
 
    ```ini
    upload_max_filesize = 5120M
