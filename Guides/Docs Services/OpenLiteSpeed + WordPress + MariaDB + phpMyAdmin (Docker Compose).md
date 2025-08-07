@@ -88,7 +88,7 @@ cd php-config
 ```
 **4.2 Create php.ini**
 ```bash
-cd sudo nano php.ini
+sudo nano php.ini
 ```
 **> Content of php.ini**
 
