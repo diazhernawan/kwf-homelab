@@ -17,7 +17,6 @@ qemu-guest-agent \
 zsh \
 nfs-common \
 cifs-utils \
-cockpit \
 iputils-ping \
 dnsutils \
 traceroute \
