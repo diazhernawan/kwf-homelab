@@ -72,7 +72,7 @@ sudo chmod -R 755 ols-data
 
 ## 4. Increase WordPress Upload Limit (Optional, for Large Imports)
 
-1. **Create `php-config/php.ini` in your project root with:**
+> **Create `php-config/php.ini` in your project root with:**
 
    ```ini
    upload_max_filesize = 5120M
@@ -81,19 +81,6 @@ sudo chmod -R 755 ols-data
    max_execution_time = 600
    max_input_time = 600
    ```
-2. **Update `compose.yaml`** to add this volume in the `ols` service:
-
-   ```yaml
-     - ./php-config/php.ini:/usr/local/etc/php/conf.d/custom.ini
-   ```
-3. **Restart your stack:**
-
-   ```bash
-   docker compose restart
-   ```
-4. **Check in WordPress:**
-   Go to Media > Add New, or WordPress Importer—you’ll see the new 5GB limit!
-
 ---
 
 ## 5. Create Your `.env` File
