@@ -53,7 +53,7 @@ rm -rf wordpress latest.tar.gz
 
 ## 3. Set Permissions for WordPress Folder
 
-3.1 Ensure both your host user and the container can read/write WordPress files.
+**Ensure both your host user and the container can read/write WordPress files.**
 
 ```bash
 sudo chown -R $USER:$USER ols-data
@@ -72,7 +72,7 @@ sudo chmod -R 755 ols-data
 
 ## 4. Increase WordPress Upload Limit (Optional, for Large Imports)
 
-4.1 **Create `php-config/php.ini` in your project root with:**
+**Create `php-config/php.ini` in your project root with:**
 
    ```ini
    upload_max_filesize = 5120M
