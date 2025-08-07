@@ -82,7 +82,11 @@ sudo chmod -R 755 ols-data
 
 ## 4. Increase WordPress Upload Limit (Optional, for Large Imports)
 
-**Create `php-config/php.ini` in your project root with:**
+**4.1 Change directory to php-config**
+```bash
+cd php-config
+```
+**4.2 Create php.ini**
 
    ```ini
    upload_max_filesize = 5120M
