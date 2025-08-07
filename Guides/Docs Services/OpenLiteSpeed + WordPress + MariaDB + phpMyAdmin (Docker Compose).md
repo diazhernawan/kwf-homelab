@@ -59,6 +59,16 @@ rm -rf wordpress latest.tar.gz
 sudo chown -R $USER:$USER ols-data
 sudo chmod -R 755 ols-data
 ```
+```bash
+sudo chown -R dinner:dinner ols-data
+sudo chmod -R 755 ols-data
+```
+```bash
+sudo chown -R kwf-admin:kwf-admin ols-data
+sudo chmod -R 755 ols-data
+```
+
+
 
 * If you see permission errors when updating plugins/themes/uploads, try:
 
