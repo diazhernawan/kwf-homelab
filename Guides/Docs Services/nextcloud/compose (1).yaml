@@ -1,0 +1,43 @@
+version: "3.9"
+
+services:
+  onlyoffice:
+    image: onlyoffice/documentserver:latest
+    container_name: onlyoffice
+    restart: unless-stopped
+    environment:
+      - JWT_ENABLED=true
+      - JWT_SECRET=${OO_JWT_SECRET}
+      # Leave the header default ("Authorization") to match the NC app
+      - WOPI_ENABLED=false
+      - DICTIONARY_ENABLED=true
+      - TZ=${TZ}
+    ports:
+      - "8080:80"
+    networks: [frontend, backend]
+    volumes:
+      - onlyoffice_logs:/var/log/onlyoffice
+      - onlyoffice_data:/var/www/onlyoffice/Data
+      - onlyoffice_lib:/var/lib/onlyoffice
+      - onlyoffice_db:/var/lib/postgresql
+    entrypoint:
+      - /bin/bash
+      - -lc
+      - |
+        echo "Forcing https scheme inside ONLYOFFICE Nginx..."
+        sed -Ei           's@(proxy_set_header[[:space:]]+X-Forwarded-Proto[[:space:]]+).+;@\1https;@'           /etc/onlyoffice/documentserver/nginx/includes/http-common.conf
+        echo "Resulting X-Forwarded-Proto line:"
+        grep -n 'X-Forwarded-Proto' /etc/onlyoffice/documentserver/nginx/includes/http-common.conf
+        exec /app/ds/run-document-server.sh
+
+networks:
+  frontend:
+    external: true
+  backend:
+    external: true
+
+volumes:
+  onlyoffice_logs:
+  onlyoffice_data:
+  onlyoffice_lib:
+  onlyoffice_db:

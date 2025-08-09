@@ -1,0 +1,19 @@
+# ---- Nextcloud DB ----
+DB_ROOT_PW=BEquyYNrsQY7n35u82RK
+DB_NAME=nextcloud
+DB_USER=nextcloud_admin
+DB_PW=B2zXoRBBEGaiKChd7G8F
+
+# ---- Nextcloud app ----
+TRUSTED_DOMAINS=nextcloud.katawarna.org onlyoffice.katawarna.org
+NC_ADMIN_USER=diazhernawan
+NC_ADMIN_PASSWORD=2Me5u$4hbH8dYSkX#%9$
+
+# ---- ONLYOFFICE ----
+OO_JWT_SECRET=5961878d7c730866ae2c399df3733e9138b017b5127649ec
+
+# ---- Whiteboard ----
+JWT_SECRET_KEY=rHaizB9rbsEN4r6Un4JB
+
+# ---- Timezone ----
+TZ=Asia/Jakarta

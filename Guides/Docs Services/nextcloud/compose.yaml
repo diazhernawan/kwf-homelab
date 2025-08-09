@@ -1,0 +1,67 @@
+version: "3.9"
+
+services:
+  db:
+    image: mariadb:10.11
+    container_name: nextcloud-db
+    restart: unless-stopped
+    command: --transaction-isolation=READ-COMMITTED
+    environment:
+      - MYSQL_ROOT_PASSWORD=${DB_ROOT_PW}
+      - MYSQL_PASSWORD=${DB_PW}
+      - MYSQL_DATABASE=${DB_NAME}
+      - MYSQL_USER=${DB_USER}
+      - TZ=${TZ}
+    volumes:
+      - ./db:/var/lib/mysql
+    networks: [backend]
+
+  redis:
+    image: redis:alpine
+    container_name: nextcloud-redis
+    restart: unless-stopped
+    environment:
+      - TZ=${TZ}
+    networks: [backend]
+
+  app:
+    image: nextcloud:31.0.7
+    container_name: nextcloud-app
+    restart: unless-stopped
+    depends_on: [redis, db]
+    ports:
+      - "12000:80"
+    environment:
+      - MYSQL_PASSWORD=${DB_PW}
+      - MYSQL_DATABASE=${DB_NAME}
+      - MYSQL_USER=${DB_USER}
+      - MYSQL_HOST=db
+      - NEXTCLOUD_TRUSTED_DOMAINS=${TRUSTED_DOMAINS}
+      - NEXTCLOUD_DEFAULT_PHONE_REGION=ID
+      - NEXTCLOUD_ADMIN_USER=${NC_ADMIN_USER}
+      - NEXTCLOUD_ADMIN_PASSWORD=${NC_ADMIN_PASSWORD}
+      - REDIS_HOST=redis
+      - TZ=${TZ}
+    volumes:
+      - ./app:/var/www/html
+      - ./config:/var/www/html/config
+      - /mnt/smb/nextcloud-data:/var/www/html/data
+    networks: [frontend, backend]
+
+  nextcloud-whiteboard-server:
+    image: ghcr.io/nextcloud-releases/whiteboard:stable
+    container_name: nextcloud-whiteboard-server
+    restart: unless-stopped
+    environment:
+      NEXTCLOUD_URL: https://nextcloud.katawarna.org
+      JWT_SECRET_KEY: ${JWT_SECRET_KEY}
+      TZ: ${TZ}
+    ports:
+      - "3020:3002"
+    networks: [frontend, backend]
+
+networks:
+  frontend:
+    external: true
+  backend:
+    external: true
