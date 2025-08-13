@@ -106,7 +106,7 @@ sudo nano php.ini
 
 ```bash
 sudo nano .env
-
+```
 
 ```ini
 # .env
