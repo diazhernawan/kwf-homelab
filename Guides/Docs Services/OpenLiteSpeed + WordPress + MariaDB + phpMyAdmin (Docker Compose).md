@@ -201,6 +201,13 @@ docker compose up -d
 
 ## 9. First-Time WordPress Setup
 
+*change ols default user & password*
+
+```bash
+docker compose exec -u root openlitespeed bash -lc '/usr/local/lsws/admin/misc/admpass.sh'
+```
+
+
 * Go to **OLS WebAdmin**: http\://YOUR\_SERVER\_IP:7080  (login: admin / 123456)
 
   * Make sure the Document Root is `/var/www/vhosts/localhost/html` (default)
