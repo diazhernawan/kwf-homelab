@@ -29,6 +29,7 @@ ols-server/
 **1.1. Change to your working directory:**
 
 ```bash
+mkdir -p ols-server
 cd ols-server
 ```
 
