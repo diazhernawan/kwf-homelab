@@ -204,7 +204,7 @@ docker compose up -d
 **change ols default user & password**
 
 ```bash
-docker compose exec -u root openlitespeed bash -lc '/usr/local/lsws/admin/misc/admpass.sh'
+docker compose exec -u root ols bash -lc '/usr/local/lsws/admin/misc/admpass.sh'
 ```
 
 
