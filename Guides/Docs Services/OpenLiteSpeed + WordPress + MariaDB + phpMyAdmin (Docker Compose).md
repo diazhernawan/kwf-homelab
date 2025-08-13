@@ -105,7 +105,7 @@ sudo nano php.ini
 
 ```bash
 sudo nano .env
-```
+
 
 ```ini
 # .env
@@ -113,6 +113,10 @@ MYSQL_DATABASE=wordpress_database
 MYSQL_ROOT_PASSWORD=y0oXowualfkAWLZqSIQ
 MYSQL_USER=BBF_MASTER
 MYSQL_PASSWORD=JULd2VUxEWh38wCfau8X
+```
+
+```bash
+openssl rand -base64 24
 ```
 
 ---
