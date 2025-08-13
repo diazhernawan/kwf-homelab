@@ -201,7 +201,7 @@ docker compose up -d
 
 ## 9. First-Time WordPress Setup
 
-*change ols default user & password*
+**change ols default user & password**
 
 ```bash
 docker compose exec -u root openlitespeed bash -lc '/usr/local/lsws/admin/misc/admpass.sh'
