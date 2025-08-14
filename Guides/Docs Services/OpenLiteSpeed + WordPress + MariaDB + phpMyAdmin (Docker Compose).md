@@ -141,6 +141,8 @@ services:
       - ./php-config/php.ini:/usr/local/lsws/lsphp83/etc/php/8.3/litespeed/php.ini
     environment:
       - TZ=Asia/Jakarta
+      - HTTPS_PROXY=
+      - https_proxy=
     networks:
       - frontend
       - backend
