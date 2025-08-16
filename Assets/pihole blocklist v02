@@ -1,0 +1,20 @@
+# Blocklists Configuration
+
+These are the curated blocklists to keep Adobe blocked while preserving Google, Cloudflare, Instagram, Blackmagic, Unifi, Plex, and your own domains.
+
+## Security & Threat Intelligence
+- [URLHaus - Malware C2](https://urlhaus.abuse.ch/downloads/hostfile)
+- [OSINT.digitalside.it - Latest Domains](https://osint.digitalside.it/Threat-Intel/lists/latestdomains.txt)
+- [Phishing Army - Extended](https://phishing.army/download/phishing_army_blocklist_extended.txt)
+- [RPiList Malware](https://v.firebog.net/hosts/RPiList-Malware.txt)
+- [RPiList Phishing](https://v.firebog.net/hosts/RPiList-Phishing.txt)
+- [Spam404 Main Blacklist](https://raw.githubusercontent.com/Spam404/lists/master/main-blacklist.txt)
+- [DandelionSprout Anti-Malware Hosts](https://raw.githubusercontent.com/DandelionSprout/adfilt/master/Alternate%20versions%20Anti-Malware%20List/AntiMalwareHosts.txt)
+- [Prigent Crypto](https://v.firebog.net/hosts/Prigent-Crypto.txt)
+- [Mandiant APT1 Report Appendix D](https://bitbucket.org/ethanr/dns-blacklists/raw/8575c9f96e5b4a1308f2f12394abd86d0927a4a0/bad_lists/Mandiant_APT1_Report_Appendix_D.txt)
+
+## Adobe Block
+- [BlocklistProject Adobe](https://blocklistproject.github.io/Lists/adobe.txt)
+
+## General Consolidator
+- [Hagezi Multi (hosts format)](https://cdn.jsdelivr.net/gh/hagezi/dns-blocklists@latest/hosts/multi.txt)
