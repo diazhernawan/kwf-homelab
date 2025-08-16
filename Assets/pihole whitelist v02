@@ -1,0 +1,49 @@
+# Whitelist Configuration
+
+Domains to keep **Google, Cloudflare, Instagram, Blackmagic, Unifi, Plex, and your own services working**.  
+Add these before refreshing Gravity / DNS cache.
+
+## Google (Accounts & OAuth)
+- accounts.google.com
+- oauth2.googleapis.com
+- apis.google.com
+- ssl.gstatic.com
+- gstatic.com
+
+## Cloudflare (Access, Workers, IPFS)
+- cloudflare.com
+- cloudflareaccess.com
+- workers.dev
+- cf-ipfs.com
+
+## Instagram (Meta)
+- instagram.com
+- cdninstagram.com
+- fbcdn.net
+
+## Blackmagic Design (Cloud & Services)
+- blackmagicdesign.com
+- cloud.blackmagicdesign.com
+
+## Unifi (Controller, Cloud Access)
+- unifi.ui.com
+- ui.com
+- network.unifi.ui.com
+- dl.ubnt.com
+
+## Plex (Remote Access, Media Delivery)
+- plex.tv
+- plex.direct
+- cpms.s3.amazonaws.com
+- pubsub.plex.bz
+- proxy.plex.bz
+- proxy02.pop.plex.bz
+
+## Your Own Domains (Always Allow)
+- arkterra.id
+- bbfmeatshop.co.id
+- daging.co.id
+- katawarnafilm.com
+- katawarna.id
+- katawarna.org
+- politekniktempo.com
