@@ -5,19 +5,11 @@
 ```bash
 sudo apt update && sudo apt install -y \
 sudo \
-aptitude \
-git \
-wget \
-curl \
-nano \
-vim \
-neofetch \
-htop \
-qemu-guest-agent \
-zsh \
-nfs-common \
-cifs-utils \
-iputils-ping \
-dnsutils \
-traceroute \
+git wget curl nano vim zsh \
+qemu-guest-agent nfs-common cifs-utils \
+iputils-ping dnsutils traceroute mtr net-tools \
+rsync zip unzip p7zip-full \
+jq tree ncdu lsof \
+fail2ban ufw \
+btop fastfetch tmux bat fd-find ripgrep \
 ```
